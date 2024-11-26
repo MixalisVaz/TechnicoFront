@@ -37,6 +37,7 @@
       "prefix": "app",
       "architect": {
         "build": {
+          
           "builder": "@angular-devkit/build-angular:application",
           "options": {
             "outputPath": "dist/technico-front",
@@ -47,7 +48,7 @@
             ],
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
-            "assets": [
+            "assets": ["src/assets",
               {
                 "glob": "**/*",
                 "input": "public"

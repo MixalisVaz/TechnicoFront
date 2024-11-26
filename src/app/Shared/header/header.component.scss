@@ -1,0 +1,53 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  
+    .logo img {
+      height: 70px; /* Προσαρμόζεις ανάλογα με το λογότυπο */
+    }
+
+    .header-text {
+        flex: 1; /* Επιτρέπει στο κείμενο να καταλάβει τον διαθέσιμο χώρο */
+        text-align: center; /* Κεντράρει το κείμενο */
+        font-size: 1.2rem; /* Προσαρμόζει το μέγεθος του κειμένου */
+        color: hsl(28, 46%, 53%); /* Ορίζει το χρώμα του κειμένου */
+      }
+  
+    .nav {
+      .nav-list {
+        display: flex;
+        list-style: none;
+        gap: 2rem;
+  
+        li {
+          a {
+            text-decoration: none;
+            font-size: 1rem;
+            color: #333;
+            transition: color 0.3s ease;
+  
+            &:hover {
+              color: #ff6600; /* Προσαρμόζεις το hover χρώμα */
+            }
+          }
+  
+          .btn-sign-in {
+            background-color: #ff6600;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+  
+            &:hover {
+              background-color: #e65500;
+            }
+          }
+        }
+      }
+    }
+  }
+  
