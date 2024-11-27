@@ -1,0 +1,27 @@
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
+@Component({
+  selector: 'app-property-table',
+  templateUrl: './property-table.component.html',
+  styleUrls: ['./property-table.component.css']})
+
+export class PropertyTableComponent implements OnInit {
+
+  ngOnInit(): void {}
+  properties = [
+    {
+      id: '12345',
+      address: '123 Main St, Athens',
+      year: 2005,
+      type: 'Apartment',
+      ownerVAT: '987654321'
+    },
+    {
+      id: '67890',
+      address: '456 Elm St, Thessaloniki',
+      year: 2010,
+      type: 'Maisonette',
+      ownerVAT: '123456789'
+    }
+  ];
