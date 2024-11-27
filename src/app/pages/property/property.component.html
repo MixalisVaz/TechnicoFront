@@ -1,1 +1,28 @@
-<p>property works!</p>
+<p>property works!</p><div>
+    <h1>Property Management</h1>
+  
+    <form [formGroup]="propertyForm" (ngSubmit)="createProperty()">
+      <label>Property ID:</label>
+      <input formControlName="propertyId" type="text" />
+      <label>Address:</label>
+      <input formControlName="address" type="text" />
+      <label>Year Built:</label>
+      <input formControlName="yearBuilt" type="text" />
+      <label>VAT Number:</label>
+      <input formControlName="vatNumber" type="text" />
+      <button type="submit">Save</button>
+    </form>
+  
+    <div>
+      <input [(ngModel)]="searchCriteria" placeholder="Search by Property ID or VAT" />
+      <button (click)="searchProperties()">Search</button>
+    </div>
+
+    <ul>
+        <li *ngFor="let property of properties">
+          {{ property.propertyId }} - {{ property.address }} - {{ property.yearBuilt }} - {{ property.vatNumber }}
+          <button (click)="updateProperty(property)">Update</button>
+          <button (click)="deleteProperty(property.propertyId)">Delete</button>
+        </li>
+      </ul>
+    </div>
