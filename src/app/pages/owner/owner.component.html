@@ -1,1 +1,91 @@
-<p>owner works!</p>
+<div class="owner-container">
+    <h1>Owner Management</h1>
+
+    <!-- Form for Adding/Updating Owner -->
+    <form [formGroup]="ownerForm" (ngSubmit)="createOwner()" class="owner-form">
+        <div>
+            <label for="vatNumber">VAT Number:</label>
+            <input id="vatNumber" formControlName="vatNumber" type="text">
+        </div>
+        <div>
+            <label for="name">Name:</label>
+            <input id="name" formControlName="name" type="text">
+        </div>
+        <div>
+            <label for="surname">Surname:</label>
+            <input id="surname" formControlName="surname" type="text">
+        </div>
+        <div>
+            <label for="address">Address:</label>
+            <input id="address" formControlName="address" type="text">
+        </div>
+        <div>
+            <label for="phoneNumber">Phone Number:</label>
+            <input id="phoneNumber" formControlName="phoneNumber" type="text">
+        </div>
+        <div>
+            <label for="email">Email:</label>
+            <input id="email" formControlName="email" type="email">
+        </div>
+        <div>
+            <label for="username">Username:</label>
+            <input id="username" formControlName="username" type="text">
+        </div>
+        <div>
+            <label for="password">Password:</label>
+            <input id="password" formControlName="password" type="password">
+        </div>
+        <div>
+            <label for="propertyType">Property Type:</label>
+            <select id="propertyType" formControlName="propertyType">
+                <option value="Detached house">Detached House</option>
+                <option value="Maisonette">Maisonette</option>
+                <option value="Apartment">Apartment</option>
+            </select>
+        </div>
+        <button type="submit" [disabled]="!ownerForm.valid">Save Owner</button>
+        <button type="button" (click)="ownerForm.reset()">Clear</button>
+    </form>
+
+    <!-- Search Bar -->
+    <div class="search-bar">
+        <label for="searchCriteria">Search Owners:</label>
+        <input id="searchCriteria" [(ngModel)]="searchCriteria" (keyup.enter)="searchOwners()">
+        <button (click)="searchOwners()">Search</button>
+    </div>
+
+    <!-- Owner List -->
+    <div *ngIf="owners.length > 0">
+        <h2>Owner List</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>VAT Number</th>
+                    <th>Name</th>
+                    <th>Surname</th>
+                    <th>Address</th>
+                    <th>Phone</th>
+                    <th>Email</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let owner of owners">
+                    <td>{{ owner.vatNumber }}</td>
+                    <td>{{ owner.name }}</td>
+                    <td>{{ owner.surname }}</td>
+                    <td>{{ owner.address }}</td>
+                    <td>{{ owner.phoneNumber }}</td>
+                    <td>{{ owner.email }}</td>
+                    <td>
+                        <button (click)="updateOwner(owner)">Edit</button>
+                        <button (click)="deleteOwner(owner.vatNumber)">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="owners.length === 0">
+        <p>No owners found.</p>
+    </div>
+</div>
