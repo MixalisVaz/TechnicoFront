@@ -2,10 +2,27 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-create-property',
-  imports: [],
   templateUrl: './create-property.component.html',
-  styleUrl: './create-property.component.scss'
+  styleUrls: ['./create-property.component.scss']
 })
 export class CreatePropertyComponent {
+  property = {
+    ownerVatNumber: '',
+    propertyIdentificationE9Number: '',
+    address: '',
+    propertyType: 'Residential',
+    yearOfConstruction: null
+  };
 
+  constructor() {}
+
+  onSubmit(form: any) {
+    if (form.valid) {
+      console.log('Property Submitted:', this.property);
+      // Εδώ μπορείς να κάνεις POST στο backend
+    } else {
+      console.log('Form is invalid');
+    }
+  }
 }
+
