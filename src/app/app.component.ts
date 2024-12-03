@@ -7,7 +7,7 @@ import { OwnerComponent } from "./pages/owner/owner.component";
 
 @Component({
   selector: 'app-root',
-  imports: [FooterComponent, HeaderComponent, ReactiveFormsModule, OwnerComponent],
+  imports: [FooterComponent, HeaderComponent, ReactiveFormsModule, OwnerComponent, RouterOutlet],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
