@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class PropertyService {
-  private apiUrl = 'http://localhost:4200/technico/properties'; // Replace with actual backend URL
+  private apiUrl = 'http://localhost:8080/technico/properties'; // Replace with actual backend URL
 
   constructor(private http: HttpClient) { }
 
