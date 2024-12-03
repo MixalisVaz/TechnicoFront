@@ -19,8 +19,8 @@ import { Repair } from '../../domain/repair';
 })
 export class PropertyComponent  implements OnInit {
 
-  properties: any[] = []; // Replace with your property model
-  repairs: any[] = []; // Store repairs here
+  properties: any[] = []; 
+  repairs: any[] = []; 
   selectedPropertyId: number | null = null;
 
   
@@ -57,7 +57,7 @@ export class PropertyComponent  implements OnInit {
         });
     }
   }
-  
+
   editProperty(propertyId: number): void {
     this.router.navigate([`/properties/${propertyId}/update`]);
   }
