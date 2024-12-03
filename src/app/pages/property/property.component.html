@@ -2,32 +2,33 @@
 
 <div class="propertyContainer">
   <h2>Property Information</h2>
-  <table class="table table-striped table-bordered">
+  <table class="propertyTable">
     <thead class="thead-dark">
       <tr>
-        <th scope="col">Property ID</th>
-        <th scope="col">Address</th>
-        <th scope="col">Year of Construction</th>
-        <th scope="col">Type</th>
-        <th scope="col">Owner VAT Number</th>
-        <th scope="col">Actions</th>
+        <th>Property Id</th>
+        <th>Property  E9 number</th>
+        <th>Address</th>
+        <th>Year of Construction</th>
+        <th>Type</th>
+        <th>Owner Vat</th>
+        <th>Repairs</th>
       </tr>
     </thead>
     <tbody>
-      @for (property of properties; track $index){
-        <tr >
-          <td>{{ property.id }}</td>
+    
+        <tr *ngFor="let property of properties">
+          <td>{{ property.id}}</td>
+          <td>{{ property.propertyIdentificationE9Number}}</td>
           <td>{{ property.address }}</td>
-          <td>{{ property.year }}</td>
-          <td>{{ property.type }}</td>
-          <td>{{ property.ownerVAT }}</td>
+          <td>{{ property.yearOfConstruction }}</td>
+          <td>{{ property.propertyType }}</td>
+          <td>{{ property.owner.vatNumber }}</td>
           <td>
-            <button class="btn" (click)="viewRepairs(property.id)">View Repairs</button>
+            <button class="btn" (click)="viewPropertyRepairs(property.id)">View Repairs</button>
             <button class="btn btn-primary btn-sm" (click)="editProperty(property.id)">Edit</button>
             <button class="btn btn-danger btn-sm" (click)="deleteProperty(property.id)">Delete</button>
           </td>
         </tr>
-      }
     </tbody>
   </table>
 </div>

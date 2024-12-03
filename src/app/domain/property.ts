@@ -1,22 +1,13 @@
-export class Property {
-    id: number; // Unique E9 Property ID
+import { Owner } from "./owner";
+import { Repair } from "./repair";
+
+export interface Property {
+  id:number,
+  propertyIdentificationE9Number: number; // Unique E9 Property ID
     address: string;
     yearOfConstruction: number; 
-    type: 'Detached house' | 'Maisonette' | 'Apartment building'; 
-    ownerVAT: string; 
-  
-    constructor(
-      id: number,
-      address: string,
-      yearOfConstruction: number,
-      type: 'Detached house' | 'Maisonette' | 'Apartment building',
-      ownerVAT: string
-    ) {
-      this.id = id;
-      this.address = address;
-      this.yearOfConstruction = yearOfConstruction;
-      this.type = type;
-      this.ownerVAT = ownerVAT;
-    }
-  }
+    propertyType: 'DETACHED' | 'SEMI_DETACHED' | 'FLAT'; 
+    owner: Owner;
+    repairs:Repair[];
+}
   
