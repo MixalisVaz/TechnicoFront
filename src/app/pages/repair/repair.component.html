@@ -1,1 +1,34 @@
-<p>repair works!</p>
+<div class="repairs-container">
+  <h2>Repair List</h2>
+  <table class="repairs-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Date</th>
+        <th>Status</th>
+        <th>Type</th>
+        <th>Cost</th>
+        <th>Address</th>
+        <th>Owner</th>
+        <th>Description</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let repair of repairs">
+        <td>{{ repair.id }}</td>
+        <td>{{ repair.scheduledRepairDate }}</td>
+        <td>{{ repair.repairStatus }}</td>
+        <td>{{ repair.repairType }}</td>
+        <td>{{ repair.repairCost }}</td>
+        <td>{{ repair.repairAddress }}</td>
+        <td>{{ repair.workToBeDone }}</td>
+        <td>{{ repair.property }}</td>
+        <td>
+          <button class="update-button" (click)="onUpdate(repair.id)">Update</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+

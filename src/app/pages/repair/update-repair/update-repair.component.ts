@@ -9,12 +9,11 @@ import { PropertyrepairService } from '../../../service/property-repair.service'
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule, FormsModule],
   templateUrl: './update-repair.component.html',
-  styleUrl: './update-repair.component.css'
+  styleUrl: './update-repair.component.scss'
 })
 export class UpdaterepairComponent implements OnInit {
   repairForm: FormGroup;
   repairId: string = '';
-  updateForm!: FormGroup<any>;
 
   constructor(
     private fb: FormBuilder,
@@ -23,18 +22,19 @@ export class UpdaterepairComponent implements OnInit {
     private router: Router
   ) {
     this.repairForm = this.fb.group({
-      date: [''],
-      status: [''],
-      type: [''],
-      cost: [''],
-      address: [''],
-      owner: [''],
-      description: [''],
+      id: [''],
+      scheduledRepairDate: [''],
+      repairStatus: [''],
+      repairType: [''],
+      repairCost: [''],
+      repairAddress: [''],
+      workToBeDone: [''],
+      property: [''],
     });
   }
 
   ngOnInit(): void {
-    this.repairId = this.route.snapshot.paramMap.get('id')!;
+    this.repairId = this.route.snapshot.paramMap.get('id')!;    
     this.repairService.getRepairById(this.repairId).subscribe((repair) => {
       this.repairForm.patchValue(repair);
     });

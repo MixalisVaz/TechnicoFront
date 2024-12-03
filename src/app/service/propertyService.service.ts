@@ -35,3 +35,62 @@ export class PropertyService {
     this.router.navigate(['/edit-property', id]);
   }
 }
+
+
+
+
+// import { Injectable } from '@angular/core';
+// import { HttpClient } from '@angular/common/http';
+// import { Observable } from 'rxjs';
+
+// export interface Repair {
+//   id: string;
+//   date: string;
+//   status: string;
+//   type: string;
+//   cost: number;
+//   address: string;
+//   owner: string;
+//   description: string;
+// }
+
+// @Injectable({
+//   providedIn: 'root',
+// })
+// export class RepairService {
+//   private baseUrl = 'http://localhost:3000/repairs'; // Adjust URL based on your backend
+
+//   constructor(private http: HttpClient) {}
+
+//   /**
+//    * Get all repairs
+//    */
+//   getRepairs(): Observable<Repair[]> {
+//     return this.http.get<Repair[]>(this.baseUrl);
+//   }
+
+//   /**
+//    * Get repair by ID
+//    * @param id Repair ID
+//    */
+//   getRepairById(id: string): Observable<Repair> {
+//     return this.http.get<Repair>(`${this.baseUrl}/${id}`);
+//   }
+
+//   /**
+//    * Update a repair
+//    * @param id Repair ID
+//    * @param repair Updated repair data
+//    */
+//   updateRepair(id: string, repair: Partial<Repair>): Observable<void> {
+//     return this.http.put<void>(`${this.baseUrl}/${id}`, repair);
+//   }
+
+//   /**
+//    * Delete a repair
+//    * @param id Repair ID
+//    */
+//   deleteRepair(id: string): Observable<void> {
+//     return this.http.delete<void>(`${this.baseUrl}/${id}`);
+//   }
+// }

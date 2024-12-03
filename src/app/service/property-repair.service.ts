@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class PropertyrepairService {
-  private baseUrl = 'http://localhost:8080/propertyrepairs'; 
+  private baseUrl = 'http://localhost:8080/technico/repairs'; 
 
   constructor(private http: HttpClient) { }
 
@@ -14,8 +14,8 @@ export class PropertyrepairService {
     return this.http.post(`${this.baseUrl}`, repair);
   }
 
-  getRepairs(criteria: any): Observable<any[]> {
-    return this.http.get<any[]>(`${this.baseUrl}`, { params: criteria });
+  getRepairs(): Observable<any[]> {
+    return this.http.get<any[]>(this.baseUrl);
   }
 
   getRepairById(id: string): Observable<any> {
