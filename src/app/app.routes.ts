@@ -6,6 +6,7 @@ import { NotFound404Component } from './not-found-404/not-found-404.component';
 import { UpdaterepairComponent } from './pages/repair/update-repair/update-repair.component';
 import { UpdatePropertyComponent } from './pages/property/update-property/update-property.component';
 import { CreatePropertyComponent } from './pages/property/create-property/create-property.component';
+import { SignInComponent } from './pages/sign-in/sign-in.component';
 
 export const routes: Routes = [
     { path: 'home', component: HomepageComponent },
@@ -15,7 +16,8 @@ export const routes: Routes = [
     { path: 'repairs/:id/update', component: UpdaterepairComponent },
     {path: 'properties/create', component: CreatePropertyComponent},
     {path: 'properties/:id/update', component: UpdatePropertyComponent},
-    
+    { path: 'sign-in', component: SignInComponent },
+        
     { path: "**", component: NotFound404Component }
 
 
