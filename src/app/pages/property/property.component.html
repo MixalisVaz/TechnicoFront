@@ -14,18 +14,20 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let property of properties">
-        <td>{{ property.id }}</td>
-        <td>{{ property.address }}</td>
-        <td>{{ property.year }}</td>
-        <td>{{ property.type }}</td>
-        <td>{{ property.ownerVAT }}</td>
-        <td>
-          <button class="btn" (click)="viewRepairs(property.id)">View Repairs</button>
-          <button class="btn btn-primary btn-sm" (click)="editProperty(property.id)">Edit</button>
-          <button class="btn btn-danger btn-sm" (click)="deleteProperty(property.id)">Delete</button>
-        </td>
-      </tr>
+      @for (property of properties; track $index){
+        <tr >
+          <td>{{ property.id }}</td>
+          <td>{{ property.address }}</td>
+          <td>{{ property.year }}</td>
+          <td>{{ property.type }}</td>
+          <td>{{ property.ownerVAT }}</td>
+          <td>
+            <button class="btn" (click)="viewRepairs(property.id)">View Repairs</button>
+            <button class="btn btn-primary btn-sm" (click)="editProperty(property.id)">Edit</button>
+            <button class="btn btn-danger btn-sm" (click)="deleteProperty(property.id)">Delete</button>
+          </td>
+        </tr>
+      }
     </tbody>
   </table>
 </div>

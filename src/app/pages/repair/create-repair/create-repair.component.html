@@ -1,87 +1,82 @@
-<!-- <div class="create-repair-container">
-    <h2>Create Repair</h2>
-    <form #repairForm="ngForm" (ngSubmit)="onSubmit(repairForm)">
-      <div class="form-group">
-        <label for="repairDate">Date</label>
-        <input
-          type="datetime-local"
-          id="repairDate"
-          name="repairDate"
-          class="form-control"
-          [(ngModel)]="repair.repairDate"
-          required
-        />
+<!-- <div class="repair-container">
+  <h1>Repair Management</h1>
+
+  <form [formGroup]="repairForm" (ngSubmit)="createRepair()" class="repair-form">
+      <div>
+          <label for="repairDate">Date:</label>
+          <input id="repairDate" formControlName="repairDate" type="datetime-local">
       </div>
-  
-      <div class="form-group">
-        <label for="repairType">Type of Repair</label>
-        <select
-          id="repairType"
-          name="repairType"
-          class="form-control"
-          [(ngModel)]="repair.repairType"
-          required
-        >
-          <option value="Painting">Painting</option>
-          <option value="Insulation">Insulation</option>
-          <option value="Frames">Frames</option>
-          <option value="Plumbing">Plumbing</option>
-          <option value="Electrical">Electrical</option>
-        </select>
+      <div>
+          <label for="repairType">Type of Repair:</label>
+          <select id="repairType" formControlName="repairType">
+              <option value="Painting">Painting</option>
+              <option value="Insulation">Insulation</option>
+              <option value="Frames">Frames</option>
+              <option value="Plumbing">Plumbing</option>
+              <option value="Electrical">Electrical</option>
+          </select>
       </div>
-  
-      <div class="form-group">
-        <label for="repairStatus">Status</label>
-        <select
-          id="repairStatus"
-          name="repairStatus"
-          class="form-control"
-          [(ngModel)]="repair.repairStatus"
-          required
-        >
-          <option value="Pending">Pending</option>
-          <option value="In Progress">In Progress</option>
-          <option value="Complete">Complete</option>
-        </select>
+      <div>
+          <label for="repairStatus">Status:</label>
+          <select id="repairStatus" formControlName="repairStatus">
+              <option value="Pending">Pending</option>
+              <option value="In Progress">In Progress</option>
+              <option value="Complete">Complete</option>
+          </select>
       </div>
-  
-      <div class="form-group">
-        <label for="repairCost">Cost</label>
-        <input
-          type="number"
-          id="repairCost"
-          name="repairCost"
-          class="form-control"
-          [(ngModel)]="repair.repairCost"
-          required
-        />
+      <div>
+          <label for="repairCost">Cost:</label>
+          <input id="repairCost" formControlName="repairCost" type="number">
       </div>
-  
-      <div class="form-group">
-        <label for="repairAddress">Address</label>
-        <input
-          type="text"
-          id="repairAddress"
-          name="repairAddress"
-          class="form-control"
-          [(ngModel)]="repair.repairAddress"
-          required
-        />
+      <div>
+          <label for="repairAddress">Address:</label>
+          <input id="repairAddress" formControlName="repairAddress" type="text">
       </div>
-  
-      <div class="form-group">
-        <label for="repairDescription">Description</label>
-        <textarea
-          id="repairDescription"
-          name="repairDescription"
-          class="form-control"
-          [(ngModel)]="repair.description"
-        ></textarea>
+      <div>
+          <label for="repairDescription">Description:</label>
+          <textarea id="repairDescription" formControlName="repairDescription"></textarea>
       </div>
-  
-      <button type="submit" class="btn btn-primary" [disabled]="!repairForm.valid">
-        Create Repair
-      </button>
-    </form>
+      <button type="submit" [disabled]="!repairForm.valid">Save Repair</button>
+      <button type="button" (click)="repairForm.reset()">Clear</button>
+  </form>
+
+ 
+  <div class="search-bar">
+      <label for="searchCriteria">Search Repairs:</label>
+      <input id="searchCriteria" [(ngModel)]="searchCriteria" (keyup.enter)="searchRepairs()">
+      <button (click)="searchRepairs()">Search</button>
   </div>
-   -->
+
+
+  <div *ngIf="repairs.length > 0">
+      <h2>Repair List</h2>
+      <table>
+          <thead>
+              <tr>
+                  <th>Date</th>
+                  <th>Type</th>
+                  <th>Status</th>
+                  <th>Cost</th>
+                  <th>Address</th>
+                  <th>Actions</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let repair of repairs">
+                  <td>{{ repair.repairDate }}</td>
+                  <td>{{ repair.repairType }}</td>
+                  <td>{{ repair.repairStatus }}</td>
+                  <td>{{ repair.repairCost }}</td>
+                  <td>{{ repair.repairAddress }}</td>
+                  <td>
+                      <button (click)="updateRepair(repair)">Edit</button>
+                      <button (click)="deleteRepair(repair.id)">Delete</button>
+                  </td>
+              </tr>
+          </tbody>
+      </table>
+  </div>
+  <div *ngIf="repairs.length === 0">
+      <p>No repairs found.</p>
+  </div>
+</div> -->
