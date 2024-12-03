@@ -29,5 +29,6 @@ export class PropertyrepairService {
   deleteRepair(id: string): Observable<void> {
     return this.http.delete<void>(`${this.baseUrl}/${id}`);
   }
+  
 }
 
