@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PropertyService } from '../../service/propertyService';
 import { HeaderComponent } from "../../Shared/header/header.component";
 import { FooterComponent } from "../../Shared/footer/footer.component";
+import { CommonModule } from '@angular/common';
+
 
 @Component({
   selector: 'app-property',
@@ -11,6 +13,12 @@ import { FooterComponent } from "../../Shared/footer/footer.component";
   styleUrl: './property.component.scss'
 })
 export class PropertyComponent  implements OnInit {
+editProperty(arg0: any) {
+throw new Error('Method not implemented.');
+}
+viewRepairs(arg0: any) {
+throw new Error('Method not implemented.');
+}
   
   propertyForm: FormGroup;
   properties: any[] = [];

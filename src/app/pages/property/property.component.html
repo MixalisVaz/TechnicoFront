@@ -14,7 +14,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr @for ="let property of properties">
+      <tr *ngFor="let property of properties">
         <td>{{ property.id }}</td>
         <td>{{ property.address }}</td>
         <td>{{ property.year }}</td>
