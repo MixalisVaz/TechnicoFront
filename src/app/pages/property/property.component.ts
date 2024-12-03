@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PropertyService } from '../../service/propertyService.service';
 import { HeaderComponent } from "../../Shared/header/header.component";
 import { FooterComponent } from "../../Shared/footer/footer.component";
+import { CommonModule } from '@angular/common';
+
 
 @Component({
   selector: 'app-property',
