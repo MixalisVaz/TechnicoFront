@@ -11,6 +11,12 @@ import { FooterComponent } from "../../Shared/footer/footer.component";
   styleUrl: './property.component.scss'
 })
 export class PropertyComponent  implements OnInit {
+editProperty(arg0: any) {
+throw new Error('Method not implemented.');
+}
+viewRepairs(arg0: any) {
+throw new Error('Method not implemented.');
+}
   
   propertyForm: FormGroup;
   properties: any[] = [];
