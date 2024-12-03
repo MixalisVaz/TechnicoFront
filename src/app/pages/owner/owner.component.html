@@ -1,7 +1,7 @@
 <div class="owner-container">
     <h1>Owner Management</h1>
 
-    <!-- Form for Adding/Updating Owner -->
+  
     <form [formGroup]="ownerForm" (ngSubmit)="createOwner()" class="owner-form">
         <div>
             <label for="vatNumber">VAT Number:</label>
@@ -47,14 +47,14 @@
         <button type="button" (click)="ownerForm.reset()">Clear</button>
     </form>
 
-    <!-- Search Bar -->
+   
     <div class="search-bar">
         <label for="searchCriteria">Search Owners:</label>
         <input id="searchCriteria" [(ngModel)]="searchCriteria" (keyup.enter)="searchOwners()">
         <button (click)="searchOwners()">Search</button>
     </div>
 
-    <!-- Owner List -->
+    
     <div *ngIf="owners.length > 0">
         <h2>Owner List</h2>
         <table>

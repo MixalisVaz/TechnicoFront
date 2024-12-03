@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { PropertyService } from '../../service/propertyService';
+import { PropertyService } from '../../service/propertyService.service';
 import { HeaderComponent } from "../../Shared/header/header.component";
 import { FooterComponent } from "../../Shared/footer/footer.component";
 
