@@ -19,25 +19,24 @@ import { Repair } from '../../domain/repair';
 })
 export class PropertyComponent  implements OnInit {
 
-  properties: any[] = []; 
-  repairs: any[] = []; 
+  properties: Property[] = []; 
+  repairs: Repair[] = []; 
   selectedPropertyId: number | null = null;
-
   
   constructor(private router:Router, private propertyService: PropertyService) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.loadProperties();
   }
 
-  loadProperties() {
+  loadProperties(): void {
     this.propertyService.getAllProperties().subscribe((data: any[]) => {
       this.properties = data;
       console.log(data);
   });
   }
 
-  viewPropertyRepairs(propertyId: number) {
+  viewPropertyRepairs(propertyId: number): void {
     this.selectedPropertyId = propertyId;
 
     this.propertyService.getRepairsByPropertyId(propertyId).subscribe({
@@ -49,36 +48,26 @@ export class PropertyComponent  implements OnInit {
 });
   }
 
-
-  createProperty() {
-      this.propertyService.createProperty().subscribe(
-        () => {
-          this.loadProperties();
-        });
-    }
-  }
-
   editProperty(propertyId: number): void {
-    this.router.navigate([`/properties/${propertyId}/update`]);
-  }
-
-  deleteProperty(propertyId: number) {
-    this.propertyService.deleteProperty(propertyId).subscribe(
-      () => this.loadProperties(),
-      (error: any) => console.error('Error deleting property:', error)
-    );
-  }
-
+    this.router.navigate([`/properties/${propertyId}/update`])};
   
+  deleteProperty(propertyId: number): void {
+    this.propertyService.deleteProperty(propertyId).subscribe(
+      () => this.loadProperties()      
+    )};
 
+  // createProperty(): void {
+  //     this.propertyService.createProperty().subscribe(
+  //       () => {
+  //         this.loadProperties();
+  //       });
+  //   }
+  
+  // searchProperties() {
+  //     this.propertyService.searchProperties().subscribe((data: any[]) => {this.properties = data;
+  //       console.log(data);
+  // });
 
-  searchProperties() {
-      this.propertyService.searchProperties(this.searchCriteria).subscribe(
-        (data: any[]) => this.properties = data,
-        (error: any) => console.error('Error searching properties:', error)
-      );
-  }
+  // }
 
-
-
-
+}
