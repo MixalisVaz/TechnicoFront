@@ -1,49 +1,59 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { PropertyrepairService } from '../../../service/property-repair.service';
 
 @Component({
-  selector: 'app-update-repair',
+  selector: 'app-updaterepair',
+  standalone: true,
+  imports: [CommonModule, ReactiveFormsModule, FormsModule],
   templateUrl: './update-repair.component.html',
-  styleUrls: ['./update-repair.component.scss']
+  styleUrl: './update-repair.component.css'
 })
-export class UpdateRepairComponent implements OnInit {
-  repair: {
-    id: string;
-    repairDate: string;
-    repairType: string;
-    repairStatus: string;
-    repairCost: number | null; 
-    repairAddress: string;
-    description: string;
-  } = {
-    id: '',
-    repairDate: '',
-    repairType: '',
-    repairStatus: 'Pending',
-    repairCost: null,
-    repairAddress: '',
-    description: ''
-  };
+export class UpdaterepairComponent implements OnInit {
+  repairForm: FormGroup;
+  repairId: string = '';
+  updateForm!: FormGroup<any>;
 
-  constructor() {}
+  constructor(
+    private fb: FormBuilder,
+    private repairService: PropertyrepairService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {
+    this.repairForm = this.fb.group({
+      date: [''],
+      status: [''],
+      type: [''],
+      cost: [''],
+      address: [''],
+      owner: [''],
+      description: [''],
+    });
+  }
 
   ngOnInit(): void {
-    this.repair = {
-      id: '12345',
-      repairDate: '2024-12-01T12:00',
-      repairType: 'Painting',
-      repairStatus: 'In Progress',
-      repairCost: 500, 
-      repairAddress: '123 Main St',
-      description: 'Repairing the roof'
-    };
+    this.repairId = this.route.snapshot.paramMap.get('id')!;
+    this.repairService.getRepairById(this.repairId).subscribe((repair) => {
+      this.repairForm.patchValue(repair);
+    });
   }
 
-  onSubmit(form: any) {
-    if (form.valid) {
-      console.log('Repair Updated:', this.repair);
-      
-    } else {
-      console.log('Form is invalid');
+  onSubmit() {
+    this.repairService.updateRepair(this.repairId, this.repairForm.value).subscribe(() => {
+      alert('Repair updated successfully!');
+      this.router.navigate(['/propertyrepair/search']);
+    });
+  }
+
+  onDelete() {
+    if (confirm('Are you sure you want to delete this repair?')) {
+      this.repairService.deleteRepair(this.repairId).subscribe(() => {
+        alert('Repair deleted successfully!');
+        this.router.navigate(['/propertyrepair/search']);
+      });
     }
   }
+
 }
