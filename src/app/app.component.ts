@@ -10,7 +10,7 @@ import { PropertyComponent } from "./pages/property/property.component";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, FooterComponent, HeaderComponent, ReactiveFormsModule, RepairComponent, PropertyComponent],
+  imports: [RouterOutlet, FooterComponent, HeaderComponent, ReactiveFormsModule, RepairComponent, PropertyComponent, OwnerComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
