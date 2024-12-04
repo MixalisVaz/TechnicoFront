@@ -33,6 +33,7 @@ export class PropertyComponent  implements OnInit {
     this.propertyService.getAllProperties().subscribe((data: any[]) => {
       this.properties = data;
       console.log(data);
+      console.log("ok");
   });
   }
 
@@ -70,4 +71,5 @@ export class PropertyComponent  implements OnInit {
 
   // }
 
+  
 }
