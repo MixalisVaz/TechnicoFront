@@ -22,15 +22,25 @@ export class UpdateOwnerComponent implements OnInit {
     private router: Router
   ) {
     this.ownerForm = this.fb.group({
-      vatNumber: ['', [Validators.required, Validators.pattern(/^[0-9]{9}$/)]],
-      name: ['', Validators.required],
-      surname: ['', Validators.required],
-      address: ['', Validators.required],
-      phoneNumber: ['', [Validators.required, Validators.pattern(/^\+?[0-9]{10,15}$/)]],
-      email: ['', [Validators.required, Validators.email]],
-      username: ['', Validators.required],
-      password: ['', Validators.required],
-      propertyType: ['', Validators.required]
+      userName: [''],
+      password: [''],
+      role: [''],
+      vatNumber: [''],
+      firstName: [''],
+      lastName: [''],
+      address: [''],
+      phoneNumber: [''],
+      email: [''],
+      properties: [''],
+      // vatNumber: ['', [Validators.required, Validators.pattern(/^[0-9]{9}$/)]],
+      // name: ['', Validators.required],
+      // surname: ['', Validators.required],
+      // address: ['', Validators.required],
+      // phoneNumber: ['', [Validators.required, Validators.pattern(/^\+?[0-9]{10,15}$/)]],
+      // email: ['', [Validators.required, Validators.email]],
+      // username: ['', Validators.required],
+      // password: ['', Validators.required],
+      // propertyType: ['', Validators.required]
     });
   }
 
@@ -38,7 +48,7 @@ export class UpdateOwnerComponent implements OnInit {
     this.ownerId = this.route.snapshot.paramMap.get('id')!;
     this.ownerService.getOwnerById(this.ownerId).subscribe({
       next: (owner) => {
-        this.ownerForm.patchValue(owner); // Προσθήκη των δεδομένων στη φόρμα
+        this.ownerForm.patchValue(owner); 
       },
       error: (error) => {
         console.error('Error fetching owner details', error);

@@ -29,7 +29,10 @@ export class OwnerComponent implements OnInit {
     });
   }
 
-  onUpdate(ownerId: string): void {
-    this.router.navigate([`/owners/${ownerId}/update`]);
+
+  
+  onUpdate(ownervatNumber: string): void {
+    this.router.navigate([`/owner/${ownervatNumber}/update`]);
   }
+
 }
