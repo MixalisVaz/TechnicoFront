@@ -1,1 +1,50 @@
-<p>create-owner works!</p>
+<div class="create-owner-container">
+    <h1>Create Owner</h1>
+    
+    <form [formGroup]="createOwnerForm" (ngSubmit)="onSubmit()" class="owner-form">
+      <div>
+        <label for="vatNumber">VAT Number:</label>
+        <input id="vatNumber" formControlName="vatNumber" type="text" placeholder="Enter VAT Number">
+      </div>
+      <div>
+        <label for="name">Name:</label>
+        <input id="name" formControlName="name" type="text" placeholder="Enter Name">
+      </div>
+      <div>
+        <label for="surname">Surname:</label>
+        <input id="surname" formControlName="surname" type="text" placeholder="Enter Surname">
+      </div>
+      <div>
+        <label for="address">Address:</label>
+        <input id="address" formControlName="address" type="text" placeholder="Enter Address">
+      </div>
+      <div>
+        <label for="phoneNumber">Phone Number:</label>
+        <input id="phoneNumber" formControlName="phoneNumber" type="text" placeholder="Enter Phone Number">
+      </div>
+      <div>
+        <label for="email">Email:</label>
+        <input id="email" formControlName="email" type="email" placeholder="Enter Email">
+      </div>
+      <div>
+        <label for="username">Username:</label>
+        <input id="username" formControlName="username" type="text" placeholder="Enter Username">
+      </div>
+      <div>
+        <label for="password">Password:</label>
+        <input id="password" formControlName="password" type="password" placeholder="Enter Password">
+      </div>
+      <div>
+        <label for="propertyType">Property Type:</label>
+        <select id="propertyType" formControlName="propertyType">
+          <option value="" disabled>Select Property Type</option>
+          <option value="Detached house">Detached House</option>
+          <option value="Maisonette">Maisonette</option>
+          <option value="Apartment">Apartment</option>
+        </select>
+      </div>
+      <button type="submit" [disabled]="!createOwnerForm.valid">Create Owner</button>
+      <button type="button" (click)="createOwnerForm.reset()">Clear Form</button>
+    </form>
+  </div>
+  

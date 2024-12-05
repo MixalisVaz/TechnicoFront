@@ -19,26 +19,26 @@
 // })
 // export class PropertyComponent  implements OnInit {
 
-//   properties: any[] = []; 
-//   repairs: any[] = []; 
-//   selectedPropertyId: number | null = null;
-
+  properties: Property[] = []; 
+  repairs: Repair[] = []; 
+  selectedPropertyId: number | null = null;
   
 //   constructor(private router:Router, private propertyService: PropertyService) {}
 
-//   ngOnInit() {
-//     this.loadProperties();
-//   }
+  ngOnInit(): void {
+    this.loadProperties();
+  }
 
-//   loadProperties() {
-//     this.propertyService.getAllProperties().subscribe((data: any[]) => {
-//       this.properties = data;
-//       console.log(data);
-//   });
-//   }
+  loadProperties(): void {
+    this.propertyService.getAllProperties().subscribe((data: any[]) => {
+      this.properties = data;
+      console.log(data);
+      console.log("ok");
+  });
+  }
 
-//   viewPropertyRepairs(propertyId: number) {
-//     this.selectedPropertyId = propertyId;
+  viewPropertyRepairs(propertyId: number): void {
+    this.selectedPropertyId = propertyId;
 
 //     this.propertyService.getRepairsByPropertyId(propertyId).subscribe({
 //       next: (repairs: any[]) => {
@@ -49,36 +49,27 @@
 // });
 //   }
 
+  editProperty(propertyId: number): void {
+    this.router.navigate([`/properties/${propertyId}/update`])};
+  
+  deleteProperty(propertyId: number): void {
+    this.propertyService.deleteProperty(propertyId).subscribe(
+      () => this.loadProperties()      
+    )};
 
-//   createProperty() {
-//       this.propertyService.createProperty().subscribe(
-//         () => {
-//           this.loadProperties();
-//         });
-//     }
-//   }
+  // createProperty(): void {
+  //     this.propertyService.createProperty().subscribe(
+  //       () => {
+  //         this.loadProperties();
+  //       });
+  //   }
+  
+  // searchProperties() {
+  //     this.propertyService.searchProperties().subscribe((data: any[]) => {this.properties = data;
+  //       console.log(data);
+  // });
 
-//   editProperty(propertyId: number): void {
-//     this.router.navigate([`/properties/${propertyId}/update`]);
-//   }
-
-//   deleteProperty(propertyId: number) {
-//     this.propertyService.deleteProperty(propertyId).subscribe(
-//       () => this.loadProperties(),
-//       (error: any) => console.error('Error deleting property:', error)
-//     );
-//   }
+  // }
 
   
-
-
-//   searchProperties() {
-//       this.propertyService.searchProperties(this.searchCriteria).subscribe(
-//         (data: any[]) => this.properties = data,
-//         (error: any) => console.error('Error searching properties:', error)
-//       );
-//   }
-
-
-
-
+}

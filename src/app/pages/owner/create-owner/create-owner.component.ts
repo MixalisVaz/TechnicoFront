@@ -1,11 +1,49 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { OwnerService } from '../../../service/owner-service.service';
 
 @Component({
   selector: 'app-create-owner',
-  imports: [],
+  standalone: true,
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './create-owner.component.html',
-  styleUrl: './create-owner.component.scss'
+  styleUrls: ['./create-owner.component.scss']
 })
 export class CreateOwnerComponent {
+  createOwnerForm: FormGroup;
 
+  constructor(private fb: FormBuilder, private ownerService: OwnerService) {
+    this.createOwnerForm = this.fb.group({
+      vatNumber: ['', [Validators.required, Validators.pattern(/^[0-9]{9}$/)]],
+      name: ['', Validators.required],
+      surname: ['', Validators.required],
+      address: ['', Validators.required],
+      phoneNumber: ['', [Validators.required, Validators.pattern(/^\+?[0-9]{10,15}$/)]],
+      email: ['', [Validators.required, Validators.email]],
+      username: ['', Validators.required],
+      password: ['', Validators.required],
+      propertyType: ['', Validators.required]
+    });
+  }
+  
+
+  onSubmit(): void {
+    if (this.createOwnerForm.valid) {
+      this.ownerService.createOwner(this.createOwnerForm.value).subscribe({
+        next: (response) => {
+          console.log('Owner created successfully', response);
+          alert('Owner created successfully!');
+          this.createOwnerForm.reset(); // Καθαρισμός της φόρμας
+        },
+        error: (error) => {
+          console.error('Error creating owner', error);
+          alert('Failed to create owner.');
+        }
+      });
+    } else {
+      alert('Please fill out the form correctly before submitting.');
+    }
+  }
+  
 }

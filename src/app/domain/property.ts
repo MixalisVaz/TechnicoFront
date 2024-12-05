@@ -1,12 +1,13 @@
 import { Owner } from "./owner";
+import { PropertyType } from "./propertyType.enum";
 import { Repair } from "./repair";
 
 export interface Property {
   id:number,
-  propertyIdentificationE9Number: number; // Unique E9 Property ID
+  propertyIdentificationE9Number: string; // Unique E9 Property ID
     address: string;
     yearOfConstruction: number; 
-    propertyType: 'DETACHED' | 'SEMI_DETACHED' | 'FLAT'; 
+    propertyType: PropertyType; 
     owner: Owner;
     repairs:Repair[];
 }

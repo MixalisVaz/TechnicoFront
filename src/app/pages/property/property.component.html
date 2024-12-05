@@ -1,34 +1,32 @@
 <!-- <app-header></app-header>
 
 <div class="propertyContainer">
-  <h2>Property Information</h2>
+  <h2 class="title">Property Information</h2>
   <table class="propertyTable">
     <thead class="thead-dark">
       <tr>
-        <th>Property Id</th>
-        <th>Property  E9 number</th>
-        <th>Address</th>
-        <th>Year of Construction</th>
-        <th>Type</th>
-        <th>Owner Vat</th>
-        <th>Repairs</th>
-      </tr>
+        <th scope="col">Property Id</th>
+        <th scope="col">Property E9 number</th>
+        <th scope="col">Address</th>
+        <th scope="col">Year of Construction</th>
+        <th scope="col">Type</th>
+        <th scope="col">Owner Vat</th>
+        <th scope="col">Actions</th>
     </thead>
     <tbody>
-    
-        <tr *ngFor="let property of properties">
-          <td>{{ property.id}}</td>
-          <td>{{ property.propertyIdentificationE9Number}}</td>
-          <td>{{ property.address }}</td>
-          <td>{{ property.yearOfConstruction }}</td>
-          <td>{{ property.propertyType }}</td>
-          <td>{{ property.owner.vatNumber }}</td>
-          <td>
-            <button class="btn" (click)="viewPropertyRepairs(property.id)">View Repairs</button>
-            <button class="btn btn-primary btn-sm" (click)="editProperty(property.id)">Edit</button>
-            <button class="btn btn-danger btn-sm" (click)="deleteProperty(property.id)">Delete</button>
-          </td>
-        </tr>
+      <tr *ngFor="let property of properties; let i = index">
+        <td scope="row">{{ property.id }}</td>
+        <td>{{ property.propertyIdentificationE9Number }}</td>
+        <td>{{ property.address }}</td>
+        <td>{{ property.yearOfConstruction }}</td>
+        <td>{{ property.propertyType }}</td>
+        <td>{{ property.owner.vatNumber }}</td>
+        <td>
+          <button class="btn btn-success btn-sm" (click)="viewPropertyRepairs(property.id)">Show Repairs</button>
+          <button class="btn btn-primary btn-sm" (click)="editProperty(property.id)">Edit</button>
+          <button class="btn btn-danger btn-sm" (click)="deleteProperty(property.id)">Delete</button>
+        </td>
+      </tr>
     </tbody>
   </table>
 </div>
