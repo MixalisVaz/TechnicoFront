@@ -19,7 +19,7 @@ export class PropertyService {
   }
 
   createProperty(property: Property): Observable<Property> {
-    return this.http.post<Property>(`${this.apiUrl}/create`, property);
+    return this.http.post<Property>(`${this.apiUrl}/new/property`, property);
   }
 
   getPropertyById(propertyId: number): Observable<Property> {
@@ -34,7 +34,7 @@ export class PropertyService {
     return this.http.get<any[]>(`${this.apiUrl}?search=${criteria}`);
   }
 
-  updateProperties(property: Property): Observable<Property> {
+  updateProperty(property: Property): Observable<Property> {
     return this.http.put<Property>(`${this.apiUrl}/${property.id}`, property)
   }
 

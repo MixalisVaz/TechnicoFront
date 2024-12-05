@@ -1,73 +1,34 @@
-<!-- <div class="create-property-container">
-    <h2>Create Property</h2>
-    <form #propertyForm="ngForm" (ngSubmit)="onSubmit(propertyForm)">
-      <div class="form-group">
-        <label for="ownerVatNumber">Owner VAT Number</label>
-        <input
-          type="text"
-          id="ownerVatNumber"
-          name="ownerVatNumber"
-          class="form-control"
-          [(ngModel)]="property.ownerVatNumber"
-          required
-        />
+<div class="createPropertyContainer">
+    <h1>Create new Property</h1>
+    
+    <form [formGroup]="createPropertyForm" (ngSubmit)="onSubmit()" class="createPropertyForm">
+      <div>
+        <label for="propertyIdentificationE9Number">Property E9 Number:</label>
+        <input id="propertyIdentificationE9Number" formControlName="propertyIdentificationE9Number" type="text" placeholder="Enter Property E9 Number">
       </div>
-  
-      <div class="form-group">
-        <label for="propertyE9">Property Identification (E9)</label>
-        <input
-          type="text"
-          id="propertyE9"
-          name="propertyE9"
-          class="form-control"
-          [(ngModel)]="property.propertyIdentificationE9Number"
-          required
-        />
+      <div>
+        <label for="address">Address:</label>
+        <input id="address" formControlName="address" type="text" placeholder="Enter Address">
       </div>
-  
-      <div class="form-group">
-        <label for="address">Address</label>
-        <input
-          type="text"
-          id="address"
-          name="address"
-          class="form-control"
-          [(ngModel)]="property.address"
-          required
-        />
+      <div>
+        <label for="yearOfConstruction">Year of Construction:</label>
+        <input id="yearOfConstruction" formControlName="yearOfConstruction" type="text" placeholder="Enter Year of Construction">
       </div>
-  
-      <div class="form-group">
-        <label for="propertyType">Type</label>
-        <select
-          id="propertyType"
-          name="propertyType"
-          class="form-control"
-          [(ngModel)]="property.propertyType"
-          required
-        >
-          <option value="Residential">Residential</option>
-          <option value="Commercial">Commercial</option>
-          <option value="Industrial">Industrial</option>
-          <option value="Agricultural">Agricultural</option>
+      <div>
+        <label for="propertyType">Property Type:</label>
+        <select id="propertyType" formControlName="propertyType">
+          <option value="" disabled>Select Property Type</option>
+          <option *ngFor="let option of propertyTypeOptions" [value]="option.key">
+            {{ option.value }}
+          </option>
         </select>
       </div>
-  
-      <div class="form-group">
-        <label for="yearOfConstruction">Year of Construction</label>
-        <input
-          type="number"
-          id="yearOfConstruction"
-          name="yearOfConstruction"
-          class="form-control"
-          [(ngModel)]="property.yearOfConstruction"
-          required
-        />
+      <div>
+        <label for="ownerId">Owner Id:</label>
+        <input id="ownerId" formControlName="ownerId" type="text" placeholder="Enter Owner Id Number">
       </div>
-  
-      <button type="submit" class="btn btn-primary" [disabled]="!propertyForm.valid">
-        Create Property
-      </button>
+      <button type="submit" [disabled]="!createPropertyForm.valid">Create Property</button>
+      <button type="button" (click)="createPropertyForm.reset()">Clear Form</button>
     </form>
   </div>
-   -->
+  

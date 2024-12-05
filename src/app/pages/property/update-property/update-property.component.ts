@@ -1,47 +1,86 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { PropertyService } from '../../../service/propertyService.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Property } from '../../../domain/property';
 
 @Component({
   selector: 'app-update-property',
+  standalone: true,
+  imports: [CommonModule, ReactiveFormsModule, FormsModule],
   templateUrl: './update-property.component.html',
   styleUrls: ['./update-property.component.scss']
 })
 export class UpdatePropertyComponent implements OnInit {
-  property: {
-    id: string;
-    ownerVatNumber: string;
-    propertyIdentificationE9Number: string;
-    address: string;
-    propertyType: string;
-    yearOfConstruction: number | null;
-  } = {
-    id: '',
-    ownerVatNumber: '',
-    propertyIdentificationE9Number: '',
-    address: '',
-    propertyType: 'Residential',
-    yearOfConstruction: null
-  };
 
-  constructor() {}
+  propertyForm: FormGroup;
+  propertyId: number = 0; 
+  property!: Property;
 
-  ngOnInit(): void {
-    // Εδώ μπορείς να φορτώσεις τα δεδομένα του property από το backend
-    this.property = {
-      id: '12345',
-      ownerVatNumber: '0987654321',
-      propertyIdentificationE9Number: 'E9-001',
-      address: '456 Main St',
-      propertyType: 'Commercial',
-      yearOfConstruction: 2005
-    };
+  constructor( 
+    private fb: FormBuilder,
+    private propertyService: PropertyService,
+    private route: ActivatedRoute,
+    private router: Router) {
+
+      this.propertyForm = this.fb.group({
+        propertyIdentificationE9Number: ['', [Validators.required]],
+        address: ['', [Validators.required]],
+        yearOfConstruction: ['', [Validators.required, Validators.pattern('^\\d{4}$')]],
+        propertyType: ['', Validators.required]
+      });
   }
 
-  onSubmit(form: any) {
-    if (form.valid) {
-      console.log('Property Updated:', this.property);
-      // Εδώ μπορείς να κάνεις PUT στο backend
+  ngOnInit(): void {
+    const id = this.route.snapshot.paramMap.get('id');
+    if (id) {
+      this.propertyId = Number(id); // Convert to number
+    } else {
+      console.warn('No property ID provided in route');
+    }
+
+    if (this.propertyId) {
+      this.propertyService.getPropertyById(this.propertyId).subscribe({
+        next: (property) => {
+          this.propertyForm.patchValue(property); 
+        },
+        error: (error) => {
+          console.error('Error fetching property details', error);
+        }
+      });
+    }
+  }
+
+  onSubmit(): void {
+    if (this.propertyForm.valid) {
+      const updatedProperty = this.propertyForm.value;
+      console.log('Property Updated:', updatedProperty);
+      this.propertyService.updateProperty(updatedProperty).subscribe({
+        next: () => {
+          console.log('Property successfully updated!');
+          this.router.navigate(['/properties']);
+        },
+        error: (error) => {
+          console.error('Error updating property:', error);
+        }
+      });
     } else {
       console.log('Form is invalid');
+    }
+  }
+
+  onDelete(): void {
+    if (confirm('Are you sure you want to delete this property?')) {
+      this.propertyService.deleteProperty(this.propertyId).subscribe({
+        next: () => {
+          alert('Property deleted successfully!');
+          this.router.navigate(['/properties/search']);
+        },
+        error: (error) => {
+          console.error('Error deleting property', error);
+        }
+      });
     }
   }
 }

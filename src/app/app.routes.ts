@@ -8,6 +8,8 @@ import { UpdateOwnerComponent } from './pages/owner/update-owner/update-owner.co
 import { UpdatePropertyComponent } from './pages/property/update-property/update-property.component';
 import { CreatePropertyComponent } from './pages/property/create-property/create-property.component';
 import { SignInComponent } from './pages/sign-in/sign-in.component';
+import { PropertyComponent } from './pages/property/property.component';
+import { ShowRepairsComponent } from './pages/property/show-repairs/show-repairs.component';
 import { AdministratorComponent } from './pages/administrator/administrator.component';
 import { RepairComponent } from './pages/repair/repair.component';
 import { PropertyComponent } from './pages/property/property.component';
@@ -20,8 +22,10 @@ export const routes: Routes = [
     { path: 'about-us', component: AboutUsComponent },
     { path: 'repairs/:id/update', component: UpdaterepairComponent },
     { path: 'owner/:id/update', component: UpdateOwnerComponent },
-    {path: 'properties/create', component: CreatePropertyComponent},
+    {path: 'properties', component:PropertyComponent},
+    {path: 'properties/new/property', component: CreatePropertyComponent},
     {path: 'properties/:id/update', component: UpdatePropertyComponent},
+    {path:'properties/:id/repairs',component:ShowRepairsComponent},
 
     { path: 'sign-in', component: SignInComponent },
     { path: 'admin', component: AdministratorComponent },
