@@ -12,16 +12,24 @@ import { PropertyComponent } from './pages/property/property.component';
 import { ShowRepairsComponent } from './pages/property/show-repairs/show-repairs.component';
 import { AdministratorComponent } from './pages/administrator/administrator.component';
 import { RepairComponent } from './pages/repair/repair.component';
-import { PropertyComponent } from './pages/property/property.component';
 import { OwnerComponent } from './pages/owner/owner.component';
+import { CreateOwnerComponent } from './pages/owner/create-owner/create-owner.component';
+import { CreateRepairComponent } from './pages/repair/create-repair/create-repair.component';
 
 export const routes: Routes = [
     { path: 'home', component: HomepageComponent },
     { path: '', redirectTo: "home" , pathMatch: "full" },
     { path: 'contact-us', component: ContactUsComponent },
     { path: 'about-us', component: AboutUsComponent },
+
     { path: 'repairs/:id/update', component: UpdaterepairComponent },
-    { path: 'owner/:id/update', component: UpdateOwnerComponent },
+    { path: 'owner/:vatNumber/update', component: UpdateOwnerComponent },
+
+    { path: 'create-owner', component: CreateOwnerComponent },
+    { path: 'create-repair', component: CreateRepairComponent},
+
+
+
     {path: 'properties', component:PropertyComponent},
     {path: 'properties/new/property', component: CreatePropertyComponent},
     {path: 'properties/:id/update', component: UpdatePropertyComponent},

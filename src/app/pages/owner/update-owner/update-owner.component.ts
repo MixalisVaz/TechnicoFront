@@ -24,7 +24,6 @@ export class UpdateOwnerComponent implements OnInit {
     this.ownerForm = this.fb.group({
       userName: [''],
       password: [''],
-      role: [''],
       vatNumber: [''],
       firstName: [''],
       lastName: [''],
@@ -32,15 +31,6 @@ export class UpdateOwnerComponent implements OnInit {
       phoneNumber: [''],
       email: [''],
       properties: [''],
-      // vatNumber: ['', [Validators.required, Validators.pattern(/^[0-9]{9}$/)]],
-      // name: ['', Validators.required],
-      // surname: ['', Validators.required],
-      // address: ['', Validators.required],
-      // phoneNumber: ['', [Validators.required, Validators.pattern(/^\+?[0-9]{10,15}$/)]],
-      // email: ['', [Validators.required, Validators.email]],
-      // username: ['', Validators.required],
-      // password: ['', Validators.required],
-      // propertyType: ['', Validators.required]
     });
   }
 
@@ -56,9 +46,21 @@ export class UpdateOwnerComponent implements OnInit {
     });
   }
   
+  // ngOnInit(): void {
+  //   this.ownervatNumber = this.route.snapshot.paramMap.get('ownervatNumber')!;
+  //   this.ownerService.getOwnerByVatNumber(this.ownervatNumber).subscribe({
+  //     next: (owner) => {
+  //       this.ownerForm.patchValue(owner); 
+  //     },
+  //     error: (error) => {
+  //       console.error('Error fetching owner details', error);
+  //     }
+  //   });
+  // }
+
   onSubmit(): void {
     if (this.ownerForm.valid) {
-      this.ownerService.updateOwner(this.ownerId, this.ownerForm.value).subscribe({
+      this.ownerService.updateOwner(this.ownerId, this.ownerForm.value).subscribe({ // ownervatNumber
         next: () => {
           alert('Owner updated successfully!');
           this.router.navigate(['/owners/search']);

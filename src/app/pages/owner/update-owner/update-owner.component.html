@@ -4,23 +4,28 @@
     <form [formGroup]="ownerForm" (ngSubmit)="onSubmit()" class="owner-form">
       <div>
         <label for="vatNumber">VAT Number:</label>
-        <input id="vatNumber" formControlName="vatNumber" type="text" placeholder="Enter VAT Number" readonly>
+        <input id="vatNumber" formControlName="vatNumber" type="text" placeholder="Enter VAT Number">
       </div>
       <div>
         <label for="name">Name:</label>
-        <input id="name" formControlName="name" type="text" placeholder="Enter Name">
+        <input id="name" formControlName="firstName" type="text" placeholder="Enter Name">
       </div>
       <div>
         <label for="surname">Surname:</label>
-        <input id="surname" formControlName="surname" type="text" placeholder="Enter Surname">
+        <input id="surname" formControlName="lastName" type="text" placeholder="Enter Surname">
       </div>
       <div>
         <label for="address">Address:</label>
-        <input id="address" formControlName="address" type="text" placeholder="Enter Address">
+        <input 
+        id="address" 
+        formControlName="address" 
+        type="text" 
+        placeholder="Enter Address"
+        />
       </div>
       <div>
         <label for="phoneNumber">Phone Number:</label>
-        <input id="phoneNumber" formControlName="phoneNumber" type="text" placeholder="Enter Phone Number">
+        <input id="phoneNumber" formControlName="phoneNumber" type="string" placeholder="Enter Phone Number" >
       </div>
       <div>
         <label for="email">Email:</label>
@@ -28,7 +33,7 @@
       </div>
       <div>
         <label for="username">Username:</label>
-        <input id="username" formControlName="username" type="text" placeholder="Enter Username">
+        <input id="username" formControlName="userName" type="text" placeholder="Enter Username">
       </div>
       <div>
         <label for="password">Password:</label>
@@ -36,7 +41,7 @@
       </div>
       <div>
         <label for="propertyType">Property Type:</label>
-        <select id="propertyType" formControlName="propertyType">
+        <select id="propertyType" formControlName="properties">
           <option value="" disabled>Select Property Type</option>
           <option value="Detached house">Detached House</option>
           <option value="Maisonette">Maisonette</option>
