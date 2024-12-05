@@ -4,8 +4,7 @@
   align-items: center;
   justify-content: flex-start;
   height: 100vh;
-  background-color: #f4f4f4; // Initial background color
-  animation: changeBackground 2s ease 1.8s forwards; // Background animation
+  background-color: #f4f4f4; 
   padding: 20px;
 }
 
@@ -19,6 +18,17 @@
   animation: slideInLeft 1.5s ease-out forwards;
 }
 
+#createProperty {
+  transform: translateY(100%);
+  display: flex;
+  justify-content: flex-end;
+  position:relative;
+  top: -100px; /* Initial position (off-screen) */
+  right: -28rem; /* Adjust to align with the table's right side */
+  animation: slideFromTop 1,5s ease-out forwards !important;
+  animation-delay: 0.5s; /* Waits until title animation finishes */
+}
+
 /* Table Animation */
 .propertyTable {
   border-collapse: collapse;
@@ -28,6 +38,18 @@
   animation-delay: 0.3s; // Starts after the title animation
   background-color: #f9f9f9;
   
+}
+
+/* Keyframes for sliding from the top */
+@keyframes slideFromTop {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 /* Keyframes for sliding in from the left */

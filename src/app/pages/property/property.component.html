@@ -2,6 +2,8 @@
 
 <div class="propertyContainer">
   <h2 class="title">Property Information</h2>
+  <button class="btn btn-primary btn-sm" id="createProperty" 
+          (click)="router.navigate(['/properties/new/property'])">Create Property</button>
   <table class="propertyTable">
     <thead class="thead-dark">
       <tr>
@@ -12,6 +14,7 @@
         <th scope="col">Type</th>
         <th scope="col">Owner Vat</th>
         <th scope="col">Actions</th>
+      </tr>
     </thead>
     <tbody>
       <tr *ngFor="let property of properties; let i = index">

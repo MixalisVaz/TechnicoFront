@@ -23,7 +23,7 @@ export class PropertyComponent  implements OnInit {
   repairs: Repair[] = []; 
   selectedPropertyId: number | null = null;
   
-  constructor(private router:Router, private propertyService: PropertyService) {}
+  constructor(public router:Router, private propertyService: PropertyService) {}
 
   ngOnInit(): void {
     this.loadProperties();
