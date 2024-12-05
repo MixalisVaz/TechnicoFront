@@ -1,19 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { PropertyService } from '../../service/propertyService.service';
-import { HeaderComponent } from "../../Shared/header/header.component";
-import { FooterComponent } from "../../Shared/footer/footer.component";
 import { CommonModule } from '@angular/common';
 import { Property } from '../../domain/property';
 import { Router } from '@angular/router';
-import { OwnerService } from '../../service/owner-service.service';
-import { PropertyrepairService } from '../../service/property-repair.service';
-import { RepairComponent } from '../repair/repair.component';
 import { Repair } from '../../domain/repair';
 
 
 @Component({
   selector: 'app-property',
-  imports: [HeaderComponent, FooterComponent,CommonModule],
+  imports: [CommonModule],
   templateUrl: './property.component.html',
   styleUrl: './property.component.scss'
 })
@@ -57,12 +52,12 @@ export class PropertyComponent  implements OnInit {
       () => this.loadProperties()      
     )};
 
-  // createProperty(): void {
-  //     this.propertyService.createProperty().subscribe(
-  //       () => {
-  //         this.loadProperties();
-  //       });
-  //   }
+  createProperty(property:Property): void {
+      this.propertyService.createProperty(property).subscribe(
+        () => {
+          this.loadProperties();
+        });
+    }
   
   // searchProperties() {
   //     this.propertyService.searchProperties().subscribe((data: any[]) => {this.properties = data;

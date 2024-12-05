@@ -19,7 +19,7 @@ export const routes: Routes = [
     { path: 'repairs/:id/update', component: UpdaterepairComponent },
     { path: 'owner/:id/update', component: UpdateOwnerComponent },
     {path: 'properties', component:PropertyComponent},
-    {path: 'properties/create', component: CreatePropertyComponent},
+    {path: 'properties/new/property', component: CreatePropertyComponent},
     {path: 'properties/:id/update', component: UpdatePropertyComponent},
     {path:'properties/:id/repairs',component:ShowRepairsComponent},
     { path: 'sign-in', component: SignInComponent },
