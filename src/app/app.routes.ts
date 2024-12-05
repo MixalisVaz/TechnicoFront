@@ -8,6 +8,10 @@ import { UpdateOwnerComponent } from './pages/owner/update-owner/update-owner.co
 import { UpdatePropertyComponent } from './pages/property/update-property/update-property.component';
 import { CreatePropertyComponent } from './pages/property/create-property/create-property.component';
 import { SignInComponent } from './pages/sign-in/sign-in.component';
+import { AdministratorComponent } from './pages/administrator/administrator.component';
+import { RepairComponent } from './pages/repair/repair.component';
+import { PropertyComponent } from './pages/property/property.component';
+import { OwnerComponent } from './pages/owner/owner.component';
 
 export const routes: Routes = [
     { path: 'home', component: HomepageComponent },
@@ -18,7 +22,13 @@ export const routes: Routes = [
     { path: 'owner/:id/update', component: UpdateOwnerComponent },
     {path: 'properties/create', component: CreatePropertyComponent},
     {path: 'properties/:id/update', component: UpdatePropertyComponent},
+
     { path: 'sign-in', component: SignInComponent },
+    { path: 'admin', component: AdministratorComponent },
+    { path: 'repairs', component: RepairComponent },
+    { path: 'properties', component: PropertyComponent },
+    { path: 'owners', component: OwnerComponent },
+
         
     { path: "**", component: NotFound404Component }
 
