@@ -22,6 +22,10 @@ export class OwnerService {
     return this.http.get<any>(`${this.baseUrl}/${id}`);
   }
 
+  getOwnerByVatNumber(vatNumber: string): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/vat/${vatNumber}`);
+  }
+
   updateOwner(id: string, owner: any): Observable<any> {
     return this.http.put(`${this.baseUrl}/${id}`, owner);
   }
