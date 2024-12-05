@@ -17,3 +17,5 @@ import { RepairComponent } from "./pages/repair/repair.component";
 export class AppComponent {
   title = 'TechnicoFront';
 }
+
+

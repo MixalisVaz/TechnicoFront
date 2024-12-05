@@ -1,13 +1,15 @@
+
 export interface Owner {
-    vatNumber: string;
-    name: string;
-    surname: string;
-    address: string;
-    phoneNumber: string;
-    email: string;
-    username: string;
+
+    userName: string;
     password: string;
-    propertyType: 'Detached house' | 'Maisonette' | 'Apartment';
+    role: string;
+    vatNumber: string;
+    firstName: string;
+    lastName: string;
+    address: string;
+    phoneNumber :string
+    email : string
+    properties: 'Detached house' | 'Maisonette' | 'Apartment';
     
 }
-  
