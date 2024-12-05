@@ -12,7 +12,6 @@ import { PropertyComponent } from './pages/property/property.component';
 import { ShowRepairsComponent } from './pages/property/show-repairs/show-repairs.component';
 import { AdministratorComponent } from './pages/administrator/administrator.component';
 import { RepairComponent } from './pages/repair/repair.component';
-import { PropertyComponent } from './pages/property/property.component';
 import { OwnerComponent } from './pages/owner/owner.component';
 
 export const routes: Routes = [
