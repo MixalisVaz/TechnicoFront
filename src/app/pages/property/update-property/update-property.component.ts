@@ -25,7 +25,7 @@ export class UpdatePropertyComponent implements OnInit {
     private router: Router) {
 
       this.propertyForm = this.fb.group({
-        propertyIdentificationE9Number: ['', [Validators.required]],
+        propertyIdentificationE9Number: [this.property.propertyIdentificationE9Number, [Validators.required]],
         address: ['', [Validators.required]],
         yearOfConstruction: ['', [Validators.required, Validators.pattern('^\\d{4}$')]],
         propertyType: ['', Validators.required]

@@ -5,19 +5,19 @@
     
     <div>
       <label for="propertyIdentificationE9Number">Property E9 Number:</label>
-      <input id="propertyIdentificationE9Number" formControlName="propertyIdentificationE9Number" type="text" placeholder="{{property.propertyIdentificationE9Number}}">
+      <input id="propertyIdentificationE9Number" formControlName="propertyIdentificationE9Number" type="text">
     </div>
     <div>
       <label for="address">Address:</label>
-      <input id="address" formControlName="address" type="text" placeholder="{{property.address}}">
+      <input id="address" formControlName="address" type="text" >
     </div>
     <div>
       <label for="yearOfConstruction">Year of construction:</label>
-      <input id="yearOfConstruction" formControlName="yearOfConstruction" type="text" placeholder="{{property.yearOfConstruction}}">
+      <input id="yearOfConstruction" formControlName="yearOfConstruction" type="text">
     </div>
     <div>
       <label for="propertyType">Property Type:</label>
-      <input id="propertyType" formControlName="propertyType" type="text" placeholder="{{property.propertyType}}">
+      <input id="propertyType" formControlName="propertyType" type="text">
     </div>
     
     <button type="submit" [disabled]="!propertyForm.valid">Update Property</button>
