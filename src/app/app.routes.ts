@@ -15,6 +15,7 @@ import { RepairComponent } from './pages/repair/repair.component';
 import { OwnerComponent } from './pages/owner/owner.component';
 import { CreateOwnerComponent } from './pages/owner/create-owner/create-owner.component';
 import { CreateRepairComponent } from './pages/repair/create-repair/create-repair.component';
+import { ShowPropertiesComponent } from './pages/owner/show-properties/show-properties.component';
 
 export const routes: Routes = [
     { path: 'home', component: HomepageComponent },
@@ -27,7 +28,7 @@ export const routes: Routes = [
 
     { path: 'create-owner', component: CreateOwnerComponent },
     { path: 'create-repair', component: CreateRepairComponent},
-
+    {path: 'owner/:vatnumber/properties', component:ShowPropertiesComponent},
 
 
     {path: 'properties', component:PropertyComponent},

@@ -3,13 +3,12 @@ import { Router } from '@angular/router';
 import { OwnerService } from '../../service/owner-service.service';
 import { CommonModule } from '@angular/common';
 import { Owner } from '../../domain/owner';
-import { CreateOwnerComponent } from './create-owner/create-owner.component';
-import { UpdateOwnerComponent } from './update-owner/update-owner.component';
+
 
 @Component({
   selector: 'app-owner',
   standalone: true,
-  imports: [CommonModule,CreateOwnerComponent, UpdateOwnerComponent],
+  imports: [CommonModule],
   templateUrl: './owner.component.html',
   styleUrls: ['./owner.component.scss']
 })
@@ -51,7 +50,9 @@ export class OwnerComponent implements OnInit {
   }
 
 
+  viewProperties(vatNumber: string): void{
+    this.router.navigate([`/owners/${vatNumber}/properties`])
+  }
+  }
 
 
-
-}
