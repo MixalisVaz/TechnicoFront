@@ -47,13 +47,6 @@ export class UpdaterepairComponent implements OnInit {
     });
   }
 
-  onDelete() {
-    if (confirm('Are you sure you want to delete this repair?')) {
-      this.repairService.deleteRepair(this.repairId).subscribe(() => {
-        alert('Repair deleted successfully!');
-        this.router.navigate(['/repairs']);
-      });
-    }
-  }
+
 
 }

@@ -26,7 +26,7 @@ export class PropertyrepairService {
     return this.http.put(`${this.baseUrl}/${id}`, repair);
   }
 
-  deleteRepair(id: string): Observable<void> {
+  deleteRepair(id: number): Observable<void> {
     return this.http.delete<void>(`${this.baseUrl}/${id}`);
   }
   

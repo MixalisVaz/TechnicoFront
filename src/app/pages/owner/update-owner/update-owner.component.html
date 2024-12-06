@@ -4,7 +4,7 @@
     <form [formGroup]="ownerForm" (ngSubmit)="onSubmit()" class="owner-form">
       <div>
         <label for="vatNumber">VAT Number:</label>
-        <input id="vatNumber" formControlName="vatNumber" type="text" placeholder="Enter VAT Number">
+        <input id="vatNumber" formControlName="vatNumber" type="text" placeholder="Enter VAT Number" readonly>
       </div>
       <div>
         <label for="name">Name:</label>
@@ -25,11 +25,11 @@
       </div>
       <div>
         <label for="phoneNumber">Phone Number:</label>
-        <input id="phoneNumber" formControlName="phoneNumber" type="string" placeholder="Enter Phone Number" >
+        <input id="phoneNumber" formControlName="phoneNumber" type="string" placeholder="Enter Phone Number" readonly>
       </div>
       <div>
         <label for="email">Email:</label>
-        <input id="email" formControlName="email" type="email" placeholder="Enter Email">
+        <input id="email" formControlName="email" type="email" placeholder="Enter Email" readonly>
       </div>
       <div>
         <label for="username">Username:</label>

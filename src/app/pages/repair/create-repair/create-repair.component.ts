@@ -23,6 +23,7 @@ export class CreateRepairComponent {
       repairCost: ['', [Validators.required, Validators.min(0)]],
       repairAddress: ['', Validators.required],
       workToBeDone: ['', Validators.required],
+      // property: [''],
     });
   }
 

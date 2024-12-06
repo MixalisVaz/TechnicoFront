@@ -31,6 +31,7 @@
         <td>{{ repair.workToBeDone }}</td>
         <td>
           <button class="update-button" (click)="onUpdate(repair.id)">Update</button>
+          <button class="btn btn-danger btn-sm" (click)="onDelete(repair.id)">Delete</button>
         </td>
       </tr>
     </tbody>

@@ -16,7 +16,7 @@ import { UpdaterepairComponent } from './update-repair/update-repair.component';
 export class RepairComponent implements OnInit {
   repairs: Repair[] = [];
 
-  constructor(public router: Router, private propertyrepairService: PropertyrepairService) {}
+  constructor(public router: Router, private propertyrepairService: PropertyrepairService ) {}
 
   ngOnInit(): void {
     this.loadRepairs();
@@ -32,4 +32,18 @@ export class RepairComponent implements OnInit {
   onUpdate(repairId: number): void {
     this.router.navigate([`/repairs/${repairId}/update`]);
   }
-}
+
+
+  onDelete(repairId :number) {
+    if (confirm('Are you sure you want to delete this repair?')) {
+      this.propertyrepairService.deleteRepair(repairId).subscribe(() => {
+        alert('Repair deleted successfully!');
+        this.loadRepairs();
+      });
+    }
+  }
+
+  }
+
+
+
