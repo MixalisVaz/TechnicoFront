@@ -36,8 +36,8 @@ export class ShowRepairsComponent implements OnInit{
     });
   }
 
-  onUpdate(): void {
-    // this.repairService.updateRepairByPropertyId(this.propertyId).subscribe(())
+  onUpdate(repairId:number): void {
+    this.router.navigate([`/repairs/${repairId}/update`]);
   }
 
   
