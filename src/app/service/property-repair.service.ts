@@ -11,7 +11,7 @@ export class PropertyrepairService {
   constructor(private http: HttpClient) { }
 
   createRepair(repair: any): Observable<any> {
-    return this.http.post(`http://localhost:8080/technico/new/repair`, repair);
+    return this.http.post(`${this.baseUrl}/new/repair`, repair);
   }
 
   getRepairs(): Observable<any[]> {

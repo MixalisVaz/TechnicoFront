@@ -47,8 +47,8 @@ export class UpdateOwnerComponent implements OnInit {
   }
   
   // ngOnInit(): void {
-  //   this.ownervatNumber = this.route.snapshot.paramMap.get('ownervatNumber')!;
-  //   this.ownerService.getOwnerByVatNumber(this.ownervatNumber).subscribe({
+  //   this.vatNumber = this.route.snapshot.paramMap.get('ownervatNumber')!;
+  //   this.ownerService.getOwnerByVatNumber(this.vatNumber).subscribe({
   //     next: (owner) => {
   //       this.ownerForm.patchValue(owner); 
   //     },
@@ -60,10 +60,10 @@ export class UpdateOwnerComponent implements OnInit {
 
   onSubmit(): void {
     if (this.ownerForm.valid) {
-      this.ownerService.updateOwner(this.ownerId, this.ownerForm.value).subscribe({ // ownervatNumber
+      this.ownerService.updateOwner(this.ownerId, this.ownerForm.value).subscribe({ // vatNumber
         next: () => {
           alert('Owner updated successfully!');
-          this.router.navigate(['/owners/search']);
+          this.router.navigate(['owners']);
         },
         error: (error) => {
           console.error('Error updating owner', error);
@@ -77,10 +77,10 @@ export class UpdateOwnerComponent implements OnInit {
 
   onDelete(): void {
     if (confirm('Are you sure you want to delete this owner?')) {
-      this.ownerService.deleteOwner(this.ownerId).subscribe({
+      this.ownerService.deleteOwner(this.ownerId).subscribe({         //vatNumber
         next: () => {
           alert('Owner deleted successfully!');
-          this.router.navigate(['/owners/search']);
+          this.router.navigate(['owners']);    // 
         },
         error: (error) => {
           console.error('Error deleting owner', error);

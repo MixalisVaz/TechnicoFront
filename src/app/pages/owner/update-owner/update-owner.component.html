@@ -43,9 +43,9 @@
         <label for="propertyType">Property Type:</label>
         <select id="propertyType" formControlName="properties">
           <option value="" disabled>Select Property Type</option>
-          <option value="Detached house">Detached House</option>
-          <option value="Maisonette">Maisonette</option>
-          <option value="Apartment">Apartment</option>
+          <option value="DETACHED">Detached House</option>
+          <option value="MAISONETTE">Maisonette</option>
+          <option value="APARTMENT">Apartment</option>
         </select>
       </div>
       <button type="submit" [disabled]="!ownerForm.valid">Update Owner</button>
