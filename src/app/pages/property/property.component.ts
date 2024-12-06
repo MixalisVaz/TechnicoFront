@@ -41,9 +41,13 @@ export class PropertyComponent  implements OnInit {
     this.router.navigate([`/properties/${propertyId}/update`])};
   
   deleteProperty(propertyId: number): void {
-    this.propertyService.deleteProperty(propertyId).subscribe(
-      () => this.loadProperties()      
-    )};
+    if (confirm('Are you sure you want to delete this property?')) {
+    this.propertyService.deleteProperty(propertyId).subscribe(() => {
+        alert('Repair deleted successfully!');
+        this.loadProperties();   
+      });
+  }
+}
 
   createProperty(property:Property): void {
       this.propertyService.createProperty(property).subscribe(

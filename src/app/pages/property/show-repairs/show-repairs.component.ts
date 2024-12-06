@@ -38,6 +38,7 @@ export class ShowRepairsComponent implements OnInit{
 
   onUpdate(repairId:number): void {
     this.router.navigate([`/repairs/${repairId}/update`]);
+    this.loadRepairs();
   }
 
   
@@ -45,7 +46,7 @@ export class ShowRepairsComponent implements OnInit{
     if (confirm('Are you sure you want to delete this repair?')) {
       this.repairService.deleteRepair(repairId).subscribe(() => {
         alert('Repair deleted successfully!');
-        this.loadRepairs(); // Refresh the list
+        this.loadRepairs(); 
       });
     }
   }
