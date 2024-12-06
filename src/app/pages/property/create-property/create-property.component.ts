@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { PropertyService } from '../../../service/propertyService.service';
 import { PropertyType } from '../../../domain/propertyType.enum';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -21,7 +22,7 @@ export class CreatePropertyComponent {
   }));
   
 
-  constructor(private fb: FormBuilder, private propertyService: PropertyService) {
+  constructor(private fb: FormBuilder, private propertyService: PropertyService, public router: Router) {
     this.createPropertyForm = this.fb.group({
       propertyIdentificationE9Number: ['', [Validators.required]],
       address: ['', [Validators.required]],
@@ -32,12 +33,23 @@ export class CreatePropertyComponent {
     });
   }
 
+  getFromForm(){
+    return { 
+      ...this.createPropertyForm.value,
+      owner:{
+        id: this.createPropertyForm.get("ownerId")?.value
+      }
+    }
+  }
+
   onSubmit(): void {
+    console.log(this.getFromForm())
     if (this.createPropertyForm.valid) {
-           this.propertyService.createProperty(this.createPropertyForm.value).subscribe({
+      console.log("giati")
+           this.propertyService.createProperty(this.getFromForm()).subscribe({
             next: (response) => {
               console.log('Property created successfully', response);
-             this.createPropertyForm.reset();
+              this.router.navigate(['properties']);
             },
              error: (error) => {
                console.error('Error creating property', error);

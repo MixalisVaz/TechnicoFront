@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { PropertyrepairService } from '../../../service/property-repair.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-repair',
@@ -15,7 +16,7 @@ export class CreateRepairComponent {
   repairType = ['PAINTING', 'INSULATION', 'FRAMES', 'PLUMBING', 'ELECTRICAL_WORK'];
   repairStatus = ['PENDING', 'IN_PROGRESS', 'COMPLETE'];
 
-  constructor(private fb: FormBuilder, private propertyrepairService: PropertyrepairService) {
+  constructor(private fb: FormBuilder, private propertyrepairService: PropertyrepairService, public router: Router) {
     this.createRepairForm = this.fb.group({
       scheduledRepairDate: ['', Validators.required],
       repairStatus: ['', Validators.required],
@@ -23,17 +24,27 @@ export class CreateRepairComponent {
       repairCost: ['', [Validators.required, Validators.min(0)]],
       repairAddress: ['', Validators.required],
       workToBeDone: ['', Validators.required],
-      // property: [''],
+      propertyId: ['',Validators.required]
     });
+  }
+
+  getFromForm(){
+    return { 
+      ...this.createRepairForm.value,
+      property:{
+        id: this.createRepairForm.get("propertyId")?.value
+      }
+    }
   }
 
   onSubmit(): void {
     if (this.createRepairForm.valid) {
-      this.propertyrepairService.createRepair(this.createRepairForm.value).subscribe({
+      this.propertyrepairService.createRepair(this.getFromForm()).subscribe({
         next: (response) => {
           console.log('Repair created successfully', response);
           alert('Repair created successfully!');
-          this.createRepairForm.reset();
+          this.router.navigate(['repairs']);
+
         },
         error: (error) => {
           console.error('Error creating repair', error);
