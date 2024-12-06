@@ -10,6 +10,7 @@ import { Repair } from '../domain/repair';
 })
 
 export class PropertyService {
+  
    
    http=inject(HttpClient);
    private apiUrl = 'http://localhost:8080/technico/properties';
@@ -40,5 +41,9 @@ export class PropertyService {
 
   getRepairsByPropertyId(propertyId: number): Observable<Repair[]> {
     return this.http.get<Repair[]>(`${this.apiUrl}/repairs?propertyId=${propertyId}`);
+  }
+
+  getPropertiesByOwnerVatNumber(vatNumber: number) {
+    return this.http.get<Property[]>(`${this.apiUrl}/owner/${vatNumber}`);
   }
 }
