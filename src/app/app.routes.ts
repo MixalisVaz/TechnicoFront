@@ -28,7 +28,7 @@ export const routes: Routes = [
 
     { path: 'create-owner', component: CreateOwnerComponent },
     { path: 'create-repair', component: CreateRepairComponent},
-    {path: 'owner/:vatnumber/properties', component:ShowPropertiesComponent},
+    {path: 'owners/:vatNumber/properties', component:ShowPropertiesComponent},
 
 
     {path: 'properties', component:PropertyComponent},
