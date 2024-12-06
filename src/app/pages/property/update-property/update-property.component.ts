@@ -25,7 +25,7 @@ export class UpdatePropertyComponent implements OnInit {
     private router: Router) {
 
       this.propertyForm = this.fb.group({
-        propertyIdentificationE9Number: [this.property.propertyIdentificationE9Number, [Validators.required]],
+        propertyIdentificationE9Number: ['', [Validators.required]],
         address: ['', [Validators.required]],
         yearOfConstruction: ['', [Validators.required, Validators.pattern('^\\d{4}$')]],
         propertyType: ['', Validators.required]
@@ -53,10 +53,11 @@ export class UpdatePropertyComponent implements OnInit {
   }
 
   onSubmit(): void {
+    let propertyId = this.route.snapshot.paramMap.get('id')!;
     if (this.propertyForm.valid) {
       const updatedProperty = this.propertyForm.value;
       console.log('Property Updated:', updatedProperty);
-      this.propertyService.updateProperty(updatedProperty).subscribe({
+      this.propertyService.updateProperty(updatedProperty, propertyId).subscribe({
         next: () => {
           console.log('Property successfully updated!');
           this.router.navigate(['/properties']);

@@ -34,8 +34,8 @@ export class PropertyService {
     return this.http.get<any[]>(`${this.apiUrl}?search=${criteria}`);
   }
 
-  updateProperty(property: Property): Observable<Property> {
-    return this.http.put<Property>(`${this.apiUrl}/${property.id}`, property)
+  updateProperty(property: Property, propertyId: string): Observable<Property> {
+    return this.http.put<Property>(`${this.apiUrl}/${propertyId}/update`, property)
   }
 
   getRepairsByPropertyId(propertyId: number): Observable<Repair[]> {

@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { OwnerService } from '../../../service/owner-service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-owner',
@@ -13,7 +14,7 @@ import { OwnerService } from '../../../service/owner-service.service';
 export class CreateOwnerComponent {
   createOwnerForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private ownerService: OwnerService) {
+  constructor(private fb: FormBuilder, private ownerService: OwnerService, public router: Router) {
     this.createOwnerForm = this.fb.group({
       vatNumber: ['', [Validators.required, Validators.pattern(/^[0-9]{9}$/)]],
       name: ['', Validators.required],
@@ -34,7 +35,7 @@ export class CreateOwnerComponent {
         next: (response) => {
           console.log('Owner created successfully', response);
           alert('Owner created successfully!');
-          this.createOwnerForm.reset(); // Καθαρισμός της φόρμας
+          this.router.navigate(['owners']);
         },
         error: (error) => {
           console.error('Error creating owner', error);

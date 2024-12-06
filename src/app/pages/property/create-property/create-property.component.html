@@ -1,7 +1,7 @@
 <div class="createPropertyContainer">
     <h1>Create new Property</h1>
     
-    <form [formGroup]="createPropertyForm" (ngSubmit)="onSubmit()" class="createPropertyForm">
+    <form [formGroup]="createPropertyForm" (submit)="onSubmit()" class="createPropertyForm">
       <div>
         <label for="propertyIdentificationE9Number">Property E9 Number:</label>
         <input id="propertyIdentificationE9Number" formControlName="propertyIdentificationE9Number" type="text" placeholder="Enter Property E9 Number">
@@ -27,7 +27,7 @@
         <label for="ownerId">Owner Id:</label>
         <input id="ownerId" formControlName="ownerId" type="text" placeholder="Enter Owner Id Number">
       </div>
-      <button type="button" class="btn btn-outline-dark btn-lg btn-sm" [disabled]="!createPropertyForm.valid">Create Property</button>
+      <button type="submit" class="btn btn-outline-dark btn-lg btn-sm" [disabled]="!createPropertyForm.valid">Create Property</button>
       <button type="button" class="btn btn-outline-dark btn-sm" (click)="createPropertyForm.reset()">Clear Form</button>
     </form>
   </div>
