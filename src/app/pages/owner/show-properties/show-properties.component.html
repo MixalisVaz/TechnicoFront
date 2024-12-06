@@ -3,7 +3,7 @@
       <h2 id="PropertyList">Properties for User with Vat Number: {{ vatNumber }}</h2>  
     </div>
 
-    <button id="createRepair" (click)="router.navigate(['create-repair'])">Create Repair</button>
+    <button id="createProperty" (click)="router.navigate(['/properties/new/property'])">Create Property</button>
     
     <table class="propertyTable">
         <thead class="thead-dark">
@@ -13,7 +13,6 @@
             <th scope="col">Address</th>
             <th scope="col">Year of Construction</th>
             <th scope="col">Type</th>
-            <th scope="col">Owner Vat</th>
             <th scope="col">Actions</th>
           </tr>
         </thead>
@@ -24,10 +23,9 @@
                 <td>{{ property.address }}</td>
                 <td>{{ property.yearOfConstruction }}</td>
                 <td>{{ property.propertyType }}</td>
-                <td>{{ property.owner.vatNumber }}</td>
                 <td>
             <button class="update-button" id="updateProperty" (click)="onUpdate(property.id)">Update</button>
-            <button class="btn btn-danger btn-sm" id="deleteRepair" (click)="onDelete(property.id)">Delete</button>
+            <button class="btn btn-danger btn-sm" id="deleteProperty" (click)="onDelete(property.id)">Delete</button>
           </td>
         </tr>
       </tbody>

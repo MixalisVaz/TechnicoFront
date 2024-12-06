@@ -2,7 +2,6 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { Property } from '../../../domain/property';
 import { ActivatedRoute, Router } from '@angular/router';
-import { PropertyrepairService } from '../../../service/property-repair.service';
 import { PropertyService } from '../../../service/propertyService.service';
 
 @Component({
