@@ -14,6 +14,7 @@ import { OwnerService } from '../../../service/owner-service.service';
 export class UpdateOwnerComponent implements OnInit {
   ownerForm: FormGroup;
   ownerId: string = '';
+  vatNumber? : string;
 
   constructor(
     private fb: FormBuilder,
@@ -29,26 +30,13 @@ export class UpdateOwnerComponent implements OnInit {
       lastName: [''],
       address: [''],
       phoneNumber: [''],
-      email: [''],
-      properties: [''],
+      email: [''],      
     });
   }
 
-  ngOnInit(): void {
-    this.ownerId = this.route.snapshot.paramMap.get('id')!;
-    this.ownerService.getOwnerById(this.ownerId).subscribe({
-      next: (owner) => {
-        this.ownerForm.patchValue(owner); 
-      },
-      error: (error) => {
-        console.error('Error fetching owner details', error);
-      }
-    });
-  }
-  
   // ngOnInit(): void {
-  //   this.vatNumber = this.route.snapshot.paramMap.get('ownervatNumber')!;
-  //   this.ownerService.getOwnerByVatNumber(this.vatNumber).subscribe({
+  //   this.ownerId = this.route.snapshot.paramMap.get('id')!;
+  //   this.ownerService.getOwnerById(this.ownerId).subscribe({
   //     next: (owner) => {
   //       this.ownerForm.patchValue(owner); 
   //     },
@@ -57,10 +45,22 @@ export class UpdateOwnerComponent implements OnInit {
   //     }
   //   });
   // }
+  
+  ngOnInit(): void {
+    this.vatNumber = this.route.snapshot.paramMap.get('vatNumber')!;
+    this.ownerService.getOwnerByVatNumber(this.vatNumber).subscribe({
+      next: (owner) => {
+        this.ownerForm.patchValue(owner); 
+      },
+      error: (error) => {
+        console.error('Error fetching owner details', error);
+      }
+    });
+  }
 
   onSubmit(): void {
     if (this.ownerForm.valid) {
-      this.ownerService.updateOwner(this.ownerId, this.ownerForm.value).subscribe({ // vatNumber
+      this.ownerService.updateOwner(this.vatNumber!, this.ownerForm.value).subscribe({ // vatNumber
         next: () => {
           alert('Owner updated successfully!');
           this.router.navigate(['owners']);
@@ -75,19 +75,7 @@ export class UpdateOwnerComponent implements OnInit {
   }
   
 
-  onDelete(): void {
-    if (confirm('Are you sure you want to delete this owner?')) {
-      this.ownerService.deleteOwner(this.ownerId).subscribe({         //vatNumber
-        next: () => {
-          alert('Owner deleted successfully!');
-          this.router.navigate(['owners']);    // 
-        },
-        error: (error) => {
-          console.error('Error deleting owner', error);
-        }
-      });
-    }
-  }
+
   
 }
 

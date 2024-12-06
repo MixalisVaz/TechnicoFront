@@ -39,7 +39,7 @@
         <label for="password">Password:</label>
         <input id="password" formControlName="password" type="password" placeholder="Enter Password">
       </div>
-      <div>
+      <!-- <div>
         <label for="propertyType">Property Type:</label>
         <select id="propertyType" formControlName="properties">
           <option value="" disabled>Select Property Type</option>
@@ -47,11 +47,10 @@
           <option value="MAISONETTE">Maisonette</option>
           <option value="APARTMENT">Apartment</option>
         </select>
-      </div>
+      </div> -->
       <button type="submit" [disabled]="!ownerForm.valid">Update Owner</button>
       <button type="button" (click)="ownerForm.reset()">Clear Form</button>
     </form>
   
-    <button class="delete-btn" (click)="onDelete()">Delete Owner</button>
   </div>
   

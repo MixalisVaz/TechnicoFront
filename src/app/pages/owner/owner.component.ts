@@ -35,4 +35,23 @@ export class OwnerComponent implements OnInit {
     this.router.navigate([`/owner/${ownervatNumber}/update`]);
   }
 
+
+  onDelete(vatNumber:string): void {
+    if (confirm('Are you sure you want to delete this owner?')) {
+      this.ownerService.deleteOwner(vatNumber).subscribe({         
+        next: () => {
+          alert('Owner deleted successfully!');
+          this.loadOwners()    
+        },
+        error: (error) => {
+          console.error('Error deleting owner', error);
+        }
+      });
+    }
+  }
+
+
+
+
+
 }
