@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Repair } from '../domain/repair';
 
 @Injectable({
   providedIn: 'root'
@@ -30,5 +31,13 @@ export class PropertyrepairService {
     return this.http.delete<void>(`${this.baseUrl}/${id}`);
   }
   
+  getRepairByPropertyId(id:number): Observable<any>{
+    return this.http.get<any>(`${this.baseUrl}/propertyId/${id}`)
+  }
+  
+  deleteRepairByPropertyId(id:number): Observable<any>{
+    return this.http.delete<any>(`${this.baseUrl}/property/${id}`)
+  }
+
 }
 

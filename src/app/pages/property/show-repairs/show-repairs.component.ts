@@ -1,11 +1,55 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { PropertyrepairService } from '../../../service/property-repair.service';
+import { Repair } from '../../../domain/repair';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-show-repairs',
-  imports: [],
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './show-repairs.component.html',
   styleUrl: './show-repairs.component.scss'
 })
-export class ShowRepairsComponent {
+export class ShowRepairsComponent implements OnInit{
+  
+  repairs: Repair[] = [];
+  propertyId!:number;
+
+  constructor(
+    private route: ActivatedRoute, 
+    public router: Router, 
+    private repairService: PropertyrepairService ) {}
+ 
+  ngOnInit(): void {
+    this.loadRepairs();
+  }
+
+
+  loadRepairs(): void {
+    this.propertyId = +this.route.snapshot.paramMap.get('id')!;
+    console.log(`Fetching repairs for property ID: ${this.propertyId}`);
+    
+    this.repairService.getRepairByPropertyId(this.propertyId).subscribe((data: Repair[]) => {
+      this.repairs = data;
+      console.log(data);
+    });
+  }
+
+  onUpdate(): void {
+    // this.repairService.updateRepairByPropertyId(this.propertyId).subscribe(())
+  }
+
+  
+  onDelete(repairId: number): void {
+    if (confirm('Are you sure you want to delete this repair?')) {
+      this.repairService.deleteRepair(repairId).subscribe(() => {
+        alert('Repair deleted successfully!');
+        this.loadRepairs(); // Refresh the list
+      });
+    }
+  }
+
+
 
 }

@@ -34,6 +34,7 @@ export const routes: Routes = [
     {path: 'properties/new/property', component: CreatePropertyComponent},
     {path: 'properties/:id/update', component: UpdatePropertyComponent},
     {path:'properties/:id/repairs',component:ShowRepairsComponent},
+    
 
     { path: 'sign-in', component: SignInComponent },
     { path: 'admin', component: AdministratorComponent },

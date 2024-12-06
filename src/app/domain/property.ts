@@ -3,6 +3,7 @@ import { PropertyType } from "./propertyType.enum";
 import { Repair } from "./repair";
 
 export interface Property {
+ownerVat: any;
   id:number,
   propertyIdentificationE9Number: string; // Unique E9 Property ID
     address: string;

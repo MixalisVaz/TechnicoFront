@@ -1,1 +1,47 @@
-<p>show-repairs works!</p>
+<div class="repairs-container">
+    <div id="headRepair">
+      <h2 id="RepairList">Repairs for Property ID: {{ propertyId }}</h2>  
+    </div>
+
+    <button id="createRepair" (click)="router.navigate(['create-repair'])">Create Repair</button>
+    
+    <table class="repairs-table">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Date</th>
+          <th>Status</th>
+          <th>Type</th>
+          <th>Cost</th>
+          <th>Address</th>
+          <th>Owner's Vat</th>
+          <th>Description</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let repair of repairs">
+          <td>{{ repair.id }}</td>
+          <td>{{ repair.scheduledRepairDate | date: 'mediumDate'  }}</td>
+          <td>{{ repair.repairStatus }}</td>
+          <td>{{ repair.repairType }}</td>
+          <td>{{ repair.repairCost | currency: 'EUR'}}</td>
+          <td>{{ repair.repairAddress }}</td>        
+          <td>{{ repair.property.owner.vatNumber }}</td>
+          <td>{{ repair.workToBeDone }}</td>
+          <td>
+            <button class="update-button" id="updateRepair" (click)="onUpdate()">Update</button>
+            <button class="btn btn-danger btn-sm" id="deleteRepair" (click)="onDelete(repair.id)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+  
+  <div>
+  <ng-template #noRepairs>
+    <div class="no-repairs-message">
+      <p>No repairs found for this property.</p>
+    </div>
+  </ng-template>
+</div>
