@@ -84,4 +84,12 @@ export class UpdatePropertyComponent implements OnInit {
       });
     }
   }
+
+
+  // updateProperty(propertyId: number): void {
+  //   this.router.navigate([`/properties/${propertyId}/update`]);
+  // }
+
+  
+
 }

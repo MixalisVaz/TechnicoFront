@@ -16,7 +16,7 @@ import { OwnerComponent } from './pages/owner/owner.component';
 import { CreateOwnerComponent } from './pages/owner/create-owner/create-owner.component';
 import { CreateRepairComponent } from './pages/repair/create-repair/create-repair.component';
 import { ShowPropertiesComponent } from './pages/owner/show-properties/show-properties.component';
-import { OwnerPageComponent } from './pages/owner-page/owner-page.component';
+import { OwnersTableComponent } from './pages/owners-table/owners-table.component';
 
 export const routes: Routes = [
     { path: 'home', component: HomepageComponent },
@@ -40,7 +40,7 @@ export const routes: Routes = [
 
     { path: 'sign-in', component: SignInComponent },
     { path: 'admin', component: AdministratorComponent },
-    { path: 'owner-page', component: OwnerPageComponent },
+    { path: 'owners-table', component: OwnersTableComponent },
     { path: 'repairs', component: RepairComponent },
     { path: 'properties', component: PropertyComponent },
     { path: 'owners', component: OwnerComponent },
