@@ -3,14 +3,17 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
-    providedIn: 'root'
+  providedIn: 'root'
 })
 export class AuthService {
-    private apiUrl = 'http://localhost:8080/technico/api/auth'; 
+  private loginUrl = 'http://localhost:8080/technico/api/auth/login'; 
 
-    constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {}
 
-    login(credentials: { username: string; password: string }): Observable<any> {
-        return this.http.post(`${this.apiUrl}/login`, credentials);
-    }
+
+  login(credentials: { username: string; password: string }): Observable<{ role: string }> {
+    return this.http.post<{ role: string }>(this.loginUrl, credentials);
+  }
 }
+
+

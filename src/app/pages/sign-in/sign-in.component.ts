@@ -20,7 +20,9 @@ export class SignInComponent {
         this.authService.login(this.credentials).subscribe({
             next: (response) => {
                 if (response.role === 'ADMIN') {
-                    this.router.navigate([`/admin`]); //na balw selida gia ton admin
+                    this.router.navigate([`/admin`]); 
+                } else if (response.role === 'OWNER') {
+                    this.router.navigate([`/owner-page`]);
                 } else {
                     this.errorMessage = 'Invalid credentials!';
                 }
