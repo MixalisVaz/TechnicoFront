@@ -1,19 +1,19 @@
-<div class="container">
-  <h2>Update Property Repair</h2>
-  <form [formGroup]="repairForm" (ngSubmit)="onSubmit()">
+<div class="update-repair-container">
+  <h1 class="form-title">Update Property Repair</h1>
+  <form [formGroup]="repairForm" (ngSubmit)="onSubmit()" class="repair-form">
     <div class="form-group">
-      <label for="date">Date</label>
+      <label for="date" class="form-label">Date:</label>
       <input
         type="text"
         id="date"
         formControlName="scheduledRepairDate"
-        class="form-control"
+        class="form-input"
         placeholder="Enter date"
       />
     </div>
     <div class="form-group">
-      <label for="repairType">Repair Type</label>
-      <select id="repairType" formControlName="repairType" class="form-control">
+      <label for="repairType" class="form-label">Repair Type:</label>
+      <select id="repairType" formControlName="repairType" class="form-select">
         <option value="PAINTING">Painting</option>
         <option value="INSULATION">Insulation</option>
         <option value="FRAMES">Frames</option>
@@ -22,44 +22,51 @@
       </select>
     </div>
     <div class="form-group">
-      <label for="status">Repair Status</label>
-      <select id="status" formControlName="repairStatus" class="form-control">
+      <label for="status" class="form-label">Repair Status:</label>
+      <select id="status" formControlName="repairStatus" class="form-select">
         <option value="PENDING">Pending</option>
         <option value="IN_PROGRESS">In Progress</option>
         <option value="COMPLETE">Complete</option>
       </select>
     </div>
     <div class="form-group">
-      <label for="cost">Cost</label>
+      <label for="cost" class="form-label">Cost:</label>
       <input
         type="number"
         id="cost"
         formControlName="repairCost"
-        class="form-control"
+        class="form-input"
         placeholder="Enter repair cost"
       />
     </div>
     <div class="form-group">
-      <label for="address">Repair Address</label>
+      <label for="address" class="form-label">Repair Address:</label>
       <input
         type="text"
         id="address"
         formControlName="repairAddress"
-        class="form-control"
+        class="form-input"
         placeholder="Enter repair address"
       />
     </div>
     <div class="form-group">
-      <label for="description">Description</label>
+      <label for="description" class="form-label">Description:</label>
       <textarea
         id="description"
         formControlName="workToBeDone"
-        class="form-control"
+        class="form-textarea"
         placeholder="Enter description"
       ></textarea>
     </div>
-    <button type="submit" class="btn btn-primary">Update</button>
-    <!-- <button type="button" class="btn btn-danger" (click)="onDelete()">Delete</button> -->
+    <div class="form-actions">
+      <button type="submit" class="btn btn-success btn-lg">Update Repair</button>
+      <button
+        type="button"
+        class="btn btn-secondary btn-sm"
+        (click)="repairForm.reset()"
+      >
+        Clear Form
+      </button>
+    </div>
   </form>
 </div>
-
