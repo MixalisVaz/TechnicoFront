@@ -1,175 +1,71 @@
 <div class="create-repair-container">
-  <h2>Create Repair</h2>
+  <h1>Create new Repair</h1>
+
   <form (ngSubmit)="onSubmit()" [formGroup]="createRepairForm" class="repair-form">
-    <div class="form-group">
+    <div>
       <label for="repairDate">Repair Date:</label>
       <input
         id="repairDate"
         type="datetime-local"
         formControlName="scheduledRepairDate"
-        class="form-control"
         placeholder="Select repair date"
       />
     </div>
-
-    <div class="form-group">
+    <div>
       <label for="repairType">Repair Type:</label>
-      <select id="repairType" formControlName="repairType" class="form-control">
+      <select id="repairType" formControlName="repairType" >
         <option *ngFor="let type of repairType" [value]="type">{{ type }}</option>
       </select>
     </div>
-
-    <div class="form-group">
+    <div>
       <label for="status">Status:</label>
-      <select id="status" formControlName="repairStatus" class="form-control">
+      <select id="status" formControlName="repairStatus">
         <option *ngFor="let status of repairStatus" [value]="status">
           {{ status }}
         </option>
       </select>
     </div>
-
-    <div class="form-group">
+    <div>
       <label for="cost">Cost:</label>
       <input
         id="cost"
         type="number"
         formControlName="repairCost"
-        class="form-control"
         min="0"
         placeholder="Enter repair cost"
       />
     </div>
-
-    <div class="form-group">
+    <div>
       <label for="address">Address:</label>
       <input
         id="address"
         type="text"
         formControlName="repairAddress"
-        class="form-control"
         placeholder="Enter repair address"
       />
     </div>
-
-    <div class="form-group">
+    <div>
       <label for="address">Property Id:</label>
       <input
         id="propertyId"
         type="text"
         formControlName="propertyId"
-        class="form-control"
         placeholder="Enter property Id"
       />
     </div>
-
-
-    <!-- <div class="form-group">
-      <label for="address">Property:</label>
-      <input
-        id="property"
-        type="text"
-        formControlName="property"
-        class="form-control"
-        placeholder="Enter property E9Number"
-      />
-    </div> -->
-
-
-
-    <div class="form-group">
+    <div>
       <label for="description">Description:</label>
       <textarea
         id="description"
         formControlName="workToBeDone"
-        class="form-control"
         rows="4"
         placeholder="Enter repair description"
       ></textarea>
     </div>
-
-    <button type="submit" class="btn btn-primary" [disabled]="createRepairForm.invalid">
-      Submit
-    </button>
+    <button type="submit" class="btn btn-outline-dark btn-lg btn-sm" [disabled]="createRepairForm.invalid">Create Repair</button>
+    <button type="button" class="btn btn-outline-dark btn-sm" (click)="createRepairForm.reset()">Clear Form</button>
   </form>
 </div>
 
 
 
-
-
-<!-- <div class="create-repair-container">
-    <h2>Create Repair</h2>
-    <form (ngSubmit)="onSubmit()" [formGroup]="createRepairForm" class="repair-form">
-      <div class="form-group">
-        <label for="repairDate">Repair Date:</label>
-        <input
-          id="repairDate"
-          type="datetime-local"
-          formControlName="scheduledRepairDate"
-          class="form-control"
-        />
-      </div>
-  
-      <div class="form-group">
-        <label for="repairType">Repair Type:</label>
-        <select id="repairType" formControlName="repairType" class="form-control">
-          <option *ngFor="let type of repairType" [value]="type">{{ type }}</option>
-        </select>
-      </div>
-  
-      <div class="form-group">
-        <label for="status">Status:</label>
-        <select id="status" formControlName="repairStatus" class="form-control">
-          <option *ngFor="let status of repairStatus" [value]="status">
-            {{ status }}
-          </option>
-        </select>
-      </div>
-  
-      <div class="form-group">
-        <label for="cost">Cost:</label>
-        <input
-          id="cost"
-          type="number"
-          formControlName="repairCost"
-          class="form-control"
-          min="0"
-        />
-      </div>
-  
-      <div class="form-group">
-        <label for="address">Address:</label>
-        <input
-          id="address"
-          type="text"
-          formControlName="repairAddress"
-          class="form-control"
-        />
-      </div>
-  
-      <div class="form-group">
-        <label for="ownerVat">Owner VAT Number:</label>
-        <input
-          id="ownerVat"
-          type="text"
-          formControlName="ownerVat"
-          class="form-control"
-        />
-      </div>
-  
-      <div class="form-group">
-        <label for="description">Description:</label>
-        <textarea
-          id="description"
-          formControlName="workToBeDone"
-          class="form-control"
-          rows="4"
-        ></textarea>
-      </div>
-  
-      <button type="submit" class="btn btn-primary" [disabled]="createRepairForm.invalid">
-        Submit
-      </button>
-    </form>
-  </div>
-   -->
