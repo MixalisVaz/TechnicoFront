@@ -47,11 +47,11 @@ export class OwnersTableComponent implements OnInit {
 
 
   viewRepairs(propertyId: number): void {
-    this.router.navigate([`/properties/${propertyId}/repairs`])
+    this.router.navigate([`/property/${propertyId}/update-repairs-table`]) 
   }
 
   updateProperty(propertyId: number): void {
-    this.router.navigate([`/properties/${propertyId}/update`])
+    this.router.navigate([`/property/${propertyId}/update-table`])
   };
 
 

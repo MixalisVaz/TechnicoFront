@@ -1,0 +1,26 @@
+<div class="updateProperty">
+    <h1>Update Property</h1>
+    
+    <form [formGroup]="propertyForm" (ngSubmit)="onSubmit()" class="owner-form">
+      
+      <div>
+        <label for="propertyIdentificationE9Number">Property E9 Number:</label>
+        <input id="propertyIdentificationE9Number" formControlName="propertyIdentificationE9Number" type="text">
+      </div>
+      <div>
+        <label for="address">Address:</label>
+        <input id="address" formControlName="address" type="text" >
+      </div>
+      <div>
+        <label for="yearOfConstruction">Year of construction:</label>
+        <input id="yearOfConstruction" formControlName="yearOfConstruction" type="text">
+      </div>
+      <div>
+        <label for="propertyType">Property Type:</label>
+        <input id="propertyType" formControlName="propertyType" type="text">
+      </div>
+      
+      <button type="submit" [disabled]="!propertyForm.valid">Update Property</button>
+      <button type="button" (click)="propertyForm.reset()">Clear Form</button>
+    </form>
+  </div>
