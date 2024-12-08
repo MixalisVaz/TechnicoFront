@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { PropertyService } from '../../../service/propertyService.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Property } from '../../../domain/property';
+import { PropertyType } from '../../../domain/propertyType.enum';
 
 @Component({
   selector: 'app-update-property',
@@ -17,6 +18,11 @@ export class UpdatePropertyComponent implements OnInit {
   propertyForm: FormGroup;
   propertyId: number = 0; 
   property!: Property;
+
+  propertyTypeOptions = Object.keys(PropertyType).map((key) => ({
+    key,
+    value: PropertyType[key as keyof typeof PropertyType]
+  }));
 
   constructor( 
     private fb: FormBuilder,
@@ -84,12 +90,4 @@ export class UpdatePropertyComponent implements OnInit {
       });
     }
   }
-
-
-  // updateProperty(propertyId: number): void {
-  //   this.router.navigate([`/properties/${propertyId}/update`]);
-  // }
-
-  
-
 }

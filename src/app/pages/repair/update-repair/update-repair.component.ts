@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PropertyrepairService } from '../../../service/property-repair.service';
+import { Repair } from '../../../domain/repair';
 
 @Component({
   selector: 'app-updaterepair',
@@ -14,6 +15,7 @@ import { PropertyrepairService } from '../../../service/property-repair.service'
 export class UpdaterepairComponent implements OnInit {
   repairForm: FormGroup;
   repairId: string = '';
+  repair!:Repair;
 
   constructor(
     private fb: FormBuilder,
