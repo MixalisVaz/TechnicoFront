@@ -40,7 +40,7 @@ export const routes: Routes = [
 
     { path: 'sign-in', component: SignInComponent },
     { path: 'admin', component: AdministratorComponent },
-    { path: 'owners-table', component: OwnersTableComponent },
+    { path: 'owners-table/:username', component: OwnersTableComponent },
     { path: 'repairs', component: RepairComponent },
     { path: 'properties', component: PropertyComponent },
     { path: 'owners', component: OwnerComponent },

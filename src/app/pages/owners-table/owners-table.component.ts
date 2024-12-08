@@ -3,13 +3,13 @@ import { TableOwnerService } from '../../service/TableOwner.service';
 import { AuthService } from '../../service/AuthService.service';
 import { CommonModule } from '@angular/common';
 import { Property } from '../../domain/property';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Repair } from '../../domain/repair';
-import { PropertyService } from '../../service/propertyService.service';
 
 
 @Component({
   selector: 'app-owners-table',
+  standalone: true,
   imports: [CommonModule],
   templateUrl: './owners-table.component.html',
   styleUrls: ['./owners-table.component.scss']
@@ -20,11 +20,14 @@ export class OwnersTableComponent implements OnInit {
   repairs: Repair[] = []; 
   selectedPropertyId: number | null = null;
   errorMessage: string | null = null;
+  username!: string;
+  
 
-  constructor(public router:Router , private tableOwnerService: TableOwnerService, private authService: AuthService) {}
+  constructor(private route:ActivatedRoute,public router:Router , private tableOwnerService: TableOwnerService, private authService: AuthService) {}
 
 
   ngOnInit(): void {
+    this.username = this.route.snapshot.paramMap.get('username')!;
     const vatNumber = this.authService.getCurrentVatNumber();
 
     if (vatNumber) {

@@ -22,7 +22,7 @@ export class SignInComponent {
                 if (response.role === 'ADMIN') {
                     this.router.navigate([`/admin`]); 
                 } else if (response.role === 'PROPERTY_OWNER') {
-                    this.router.navigate([`/owners-table`]);
+                    this.router.navigate([`/owners-table/${this.credentials.username}`]);
                 } else {
                     this.errorMessage = 'Invalid credentials!';
                 }

@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Property } from '../../../domain/property';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PropertyService } from '../../../service/propertyService.service';
@@ -11,7 +11,7 @@ import { PropertyService } from '../../../service/propertyService.service';
   templateUrl: './show-properties.component.html',
   styleUrl: './show-properties.component.scss'
 })
-export class ShowPropertiesComponent {
+export class ShowPropertiesComponent implements OnInit{
 
 properties:Property[] = [];
 vatNumber!:number;
