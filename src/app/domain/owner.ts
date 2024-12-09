@@ -10,6 +10,6 @@ export interface Owner {
     address: string;
     phoneNumber :string
     email : string
-    properties: 'Detached house' | 'Maisonette' | 'Apartment';
+    properties: 'DETACHED' | 'MAISONETTE' | 'APARTMENT';
     
 }

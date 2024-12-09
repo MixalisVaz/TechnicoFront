@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Repair } from '../domain/repair';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ export class PropertyrepairService {
   constructor(private http: HttpClient) { }
 
   createRepair(repair: any): Observable<any> {
-    return this.http.post(`${this.baseUrl}`, repair);
+    return this.http.post(`${this.baseUrl}/new/repair`, repair);
   }
 
   getRepairs(): Observable<any[]> {
@@ -26,9 +27,17 @@ export class PropertyrepairService {
     return this.http.put(`${this.baseUrl}/${id}`, repair);
   }
 
-  deleteRepair(id: string): Observable<void> {
+  deleteRepair(id: number): Observable<void> {
     return this.http.delete<void>(`${this.baseUrl}/${id}`);
   }
   
+  getRepairByPropertyId(id:number): Observable<any>{
+    return this.http.get<any>(`${this.baseUrl}/propertyId/${id}`)
+  }
+  
+  deleteRepairByPropertyId(id:number): Observable<any>{
+    return this.http.delete<any>(`${this.baseUrl}/property/${id}`)
+  }
+
 }
 

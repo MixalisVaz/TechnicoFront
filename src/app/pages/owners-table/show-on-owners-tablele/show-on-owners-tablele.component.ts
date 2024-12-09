@@ -8,10 +8,10 @@ import { CommonModule } from '@angular/common';
   selector: 'app-show-repairs',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './show-repairs.component.html',
-  styleUrl: './show-repairs.component.scss'
+  templateUrl: './show-on-owners-tablele.component.html',
+  styleUrl: './show-on-owners-tablele.component.scss'
 })
-export class ShowRepairsComponent implements OnInit{
+export class ShowRepairsOnOwnersTableComponent implements OnInit{
   
   repairs: Repair[] = [];
   propertyId!:number;
@@ -37,7 +37,7 @@ export class ShowRepairsComponent implements OnInit{
   }
 
   onUpdate(repairId:number): void {
-    this.router.navigate([`/repairs/${repairId}/update`]);
+    this.router.navigate([`/repair/${repairId}/update-on-show-owners-table`]); 
     this.loadRepairs();
   }
 
@@ -53,7 +53,8 @@ export class ShowRepairsComponent implements OnInit{
 
   navigateToCreateRepair(){
     let propertyId = this.route.snapshot.paramMap.get('id')!;
-    this.router.navigate([`properties/${propertyId}/repairs/create`]);
+    this.router.navigate([`property/${propertyId}/update-repairs-table/create-repair`]);
   }
 
 }
+

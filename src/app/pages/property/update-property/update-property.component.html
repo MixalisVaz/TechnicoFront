@@ -1,28 +1,31 @@
 <div class="updateProperty">
   <h1>Update Property</h1>
   
-  <form [formGroup]="propertyForm" (ngSubmit)="onSubmit()" class="owner-form">
+  <form [formGroup]="propertyForm" (ngSubmit)="onSubmit()" class="property-form">
     
     <div>
       <label for="propertyIdentificationE9Number">Property E9 Number:</label>
-      <input id="propertyIdentificationE9Number" formControlName="propertyIdentificationE9Number" type="text" placeholder="{{property.propertyIdentificationE9Number}}">
+      <input id="propertyIdentificationE9Number" formControlName="propertyIdentificationE9Number" type="text">
     </div>
     <div>
       <label for="address">Address:</label>
-      <input id="address" formControlName="address" type="text" placeholder="{{property.address}}">
+      <input id="address" formControlName="address" type="text" >
     </div>
     <div>
       <label for="yearOfConstruction">Year of construction:</label>
-      <input id="yearOfConstruction" formControlName="yearOfConstruction" type="text" placeholder="{{property.yearOfConstruction}}">
+      <input id="yearOfConstruction" formControlName="yearOfConstruction" type="text">
     </div>
     <div>
       <label for="propertyType">Property Type:</label>
-      <input id="propertyType" formControlName="propertyType" type="text" placeholder="{{property.propertyType}}">
+      <select id="propertyType" formControlName="propertyType">
+        <option value="" disabled>Select Property Type</option>
+        <option *ngFor="let option of propertyTypeOptions" [value]="option.key">
+          {{ option.value }}
+        </option>
+      </select>
     </div>
     
-    <button type="submit" [disabled]="!propertyForm.valid">Update Property</button>
-    <button type="button" (click)="propertyForm.reset()">Clear Form</button>
+    <button type="submit" class="btn btn-success btn-lg" [disabled]="!propertyForm.valid">Update Property</button>
+    <button type="button" class="btn btn-secondary btn-sm" (click)="propertyForm.reset()">Clear Form</button>
   </form>
-
-  <button class="delete-btn" (click)="onDelete()">Delete Owner</button>
 </div>

@@ -1,0 +1,36 @@
+<div class="table-container">
+  <div>
+    <h2>Welcome {{username}}</h2>
+  </div>
+  <h2>Your Properties:</h2>
+  <table>
+    <thead>
+      <tr>
+        <th scope="col">Property Id</th>
+        <th scope="col">Property E9 number</th>
+        <th scope="col">Address</th>
+        <th scope="col">Year of Construction</th>
+        <th scope="col">Type</th>
+        <th scope="col">Owner Vat</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let property of properties; let i = index">
+        <td scope="row">{{ property.id }}</td>
+        <td>{{ property.propertyIdentificationE9Number }}</td>
+        <td>{{ property.address }}</td>
+        <td>{{ property.yearOfConstruction }}</td>
+        <td>{{ property.propertyType }}</td>
+        <td>{{ property.owner.vatNumber }}</td>
+        <td>
+          <button class="btn btn-success btn-sm" (click)="viewRepairs(property.id)">Show Repairs</button>
+          <button class="btn btn-primary btn-sm" (click)="updateProperty(property.id)">Update</button>
+          <button class="btn btn-danger btn-sm" (click)="deleteProperty(property.id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
+</div>

@@ -2,24 +2,22 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { PropertyrepairService } from '../../../service/property-repair.service';
-import { Repair } from '../../../domain/repair';
+import { PropertyrepairService } from '../../../../service/property-repair.service';
 
 @Component({
   selector: 'app-updaterepair',
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule, FormsModule],
-  templateUrl: './update-repair.component.html',
-  styleUrl: './update-repair.component.scss'
+  templateUrl: './update-on-show-on-owners-table.component.html',
+  styleUrl: './update-on-show-on-owners-table.component.scss'
 })
-export class UpdaterepairComponent implements OnInit {
+export class UpdateRepairOnOwnersTableComponent implements OnInit {
   repairForm: FormGroup;
   repairId: string = '';
-  repair!:Repair;
 
   constructor(
     private fb: FormBuilder,
-    private repairService: PropertyrepairService,
+    public repairService: PropertyrepairService,
     private route: ActivatedRoute,
     private router: Router
   ) {
@@ -45,7 +43,7 @@ export class UpdaterepairComponent implements OnInit {
   onSubmit() {
     this.repairService.updateRepair(this.repairId, this.repairForm.value).subscribe(() => {
       alert('Repair updated successfully!');
-      this.router.navigate(['/repairs']);
+      this.router.navigate(['/owners-table/:username']);
     });
   }
 

@@ -3,13 +3,12 @@ import { Router } from '@angular/router';
 import { OwnerService } from '../../service/owner-service.service';
 import { CommonModule } from '@angular/common';
 import { Owner } from '../../domain/owner';
-import { CreateOwnerComponent } from './create-owner/create-owner.component';
-import { UpdateOwnerComponent } from './update-owner/update-owner.component';
+
 
 @Component({
   selector: 'app-owner',
   standalone: true,
-  imports: [CommonModule,CreateOwnerComponent, UpdateOwnerComponent],
+  imports: [CommonModule],
   templateUrl: './owner.component.html',
   styleUrls: ['./owner.component.scss']
 })
@@ -35,4 +34,25 @@ export class OwnerComponent implements OnInit {
     this.router.navigate([`/owner/${ownervatNumber}/update`]);
   }
 
-}
+
+  onDelete(vatNumber:string): void {
+    if (confirm('Are you sure you want to delete this owner?')) {
+      this.ownerService.deleteOwner(vatNumber).subscribe({         
+        next: () => {
+          alert('Owner deleted successfully!');
+          this.loadOwners()    
+        },
+        error: (error) => {
+          console.error('Error deleting owner', error);
+        }
+      });
+    }
+  }
+
+
+  viewProperties(vatNumber: string): void{
+    this.router.navigate([`/owners/${vatNumber}/properties`])
+  }
+  }
+
+

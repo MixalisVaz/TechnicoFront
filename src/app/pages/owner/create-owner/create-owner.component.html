@@ -1,5 +1,5 @@
 <div class="create-owner-container">
-    <h1>Create Owner</h1>
+    <h1>Create new Owner</h1>
     
     <form [formGroup]="createOwnerForm" (ngSubmit)="onSubmit()" class="owner-form">
       <div>
@@ -38,13 +38,13 @@
         <label for="propertyType">Property Type:</label>
         <select id="propertyType" formControlName="propertyType">
           <option value="" disabled>Select Property Type</option>
-          <option value="Detached house">Detached House</option>
-          <option value="Maisonette">Maisonette</option>
-          <option value="Apartment">Apartment</option>
+          <option value="DETACHED">Detached House</option>
+          <option value="MAISONETTE">Maisonette</option>
+          <option value="APARTMENT">Apartment</option>
         </select>
       </div>
-      <button type="submit" [disabled]="!createOwnerForm.valid">Create Owner</button>
-      <button type="button" (click)="createOwnerForm.reset()">Clear Form</button>
+      <button type="submit" class="btn btn-outline-dark btn-lg btn-sm" [disabled]="!createOwnerForm.valid">Create Owner</button>
+      <button type="button" class="btn btn-outline-dark btn-sm" (click)="createOwnerForm.reset()">Clear Form</button>
     </form>
   </div>
   

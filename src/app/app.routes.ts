@@ -13,21 +13,46 @@ import { ShowRepairsComponent } from './pages/property/show-repairs/show-repairs
 import { AdministratorComponent } from './pages/administrator/administrator.component';
 import { RepairComponent } from './pages/repair/repair.component';
 import { OwnerComponent } from './pages/owner/owner.component';
+import { CreateOwnerComponent } from './pages/owner/create-owner/create-owner.component';
+import { CreateRepairComponent } from './pages/repair/create-repair/create-repair.component';
+import { ShowPropertiesComponent } from './pages/owner/show-properties/show-properties.component';
+import { OwnersTableComponent } from './pages/owners-table/owners-table.component';
+import { UpdateOnOwnersTableComponent } from './pages/owners-table/update-on-owners-table/update-on-owners-table.component';
+import{ ShowRepairsOnOwnersTableComponent } from './pages/owners-table/show-on-owners-tablele/show-on-owners-tablele.component'
+import { UpdateRepairOnOwnersTableComponent } from './pages/owners-table/show-on-owners-tablele/update-on-show-on-owners-table/update-on-show-on-owners-table.component'
 
 export const routes: Routes = [
     { path: 'home', component: HomepageComponent },
     { path: '', redirectTo: "home" , pathMatch: "full" },
     { path: 'contact-us', component: ContactUsComponent },
     { path: 'about-us', component: AboutUsComponent },
+
     { path: 'repairs/:id/update', component: UpdaterepairComponent },
-    { path: 'owner/:id/update', component: UpdateOwnerComponent },
+    { path: 'owner/:vatNumber/update', component: UpdateOwnerComponent },
+
+    { path: 'create-owner', component: CreateOwnerComponent },
+    { path: 'create-repair', component: CreateRepairComponent},//for admin
+    {path: 'property/:id/update-repairs-table/create-repair', component: CreateRepairComponent}, //for Owner through property
+    {path: 'properties/:id/repairs/create',component: CreateRepairComponent}, //for admin through property
+    {path: 'owners/:vatNumber/properties', component:ShowPropertiesComponent},
+
+
     {path: 'properties', component:PropertyComponent},
     {path: 'properties/new/property', component: CreatePropertyComponent},
     {path: 'properties/:id/update', component: UpdatePropertyComponent},
     {path:'properties/:id/repairs',component:ShowRepairsComponent},
+    {path: 'property/:id/update-table', component: UpdateOnOwnersTableComponent},
+    {path: 'property/:id/update-repairs-table', component: ShowRepairsOnOwnersTableComponent},
+    {path: 'repair/:id/update-on-show-owners-table', component: UpdateRepairOnOwnersTableComponent},
+
+    
+
+
+    
 
     { path: 'sign-in', component: SignInComponent },
     { path: 'admin', component: AdministratorComponent },
+    { path: 'owners-table/:username', component: OwnersTableComponent },
     { path: 'repairs', component: RepairComponent },
     { path: 'properties', component: PropertyComponent },
     { path: 'owners', component: OwnerComponent },

@@ -8,45 +8,49 @@
       </div>
       <div>
         <label for="name">Name:</label>
-        <input id="name" formControlName="name" type="text" placeholder="Enter Name">
+        <input id="name" formControlName="firstName" type="text" placeholder="Enter Name">
       </div>
       <div>
         <label for="surname">Surname:</label>
-        <input id="surname" formControlName="surname" type="text" placeholder="Enter Surname">
+        <input id="surname" formControlName="lastName" type="text" placeholder="Enter Surname">
       </div>
       <div>
         <label for="address">Address:</label>
-        <input id="address" formControlName="address" type="text" placeholder="Enter Address">
+        <input 
+        id="address" 
+        formControlName="address" 
+        type="text" 
+        placeholder="Enter Address"
+        />
       </div>
       <div>
         <label for="phoneNumber">Phone Number:</label>
-        <input id="phoneNumber" formControlName="phoneNumber" type="text" placeholder="Enter Phone Number">
+        <input id="phoneNumber" formControlName="phoneNumber" type="string" placeholder="Enter Phone Number" >
       </div>
       <div>
         <label for="email">Email:</label>
-        <input id="email" formControlName="email" type="email" placeholder="Enter Email">
+        <input id="email" formControlName="email" type="email" placeholder="Enter Email" >
       </div>
       <div>
         <label for="username">Username:</label>
-        <input id="username" formControlName="username" type="text" placeholder="Enter Username">
+        <input id="username" formControlName="userName" type="text" placeholder="Enter Username">
       </div>
       <div>
         <label for="password">Password:</label>
         <input id="password" formControlName="password" type="password" placeholder="Enter Password">
       </div>
-      <div>
+      <!-- <div>
         <label for="propertyType">Property Type:</label>
-        <select id="propertyType" formControlName="propertyType">
+        <select id="propertyType" formControlName="properties">
           <option value="" disabled>Select Property Type</option>
-          <option value="Detached house">Detached House</option>
-          <option value="Maisonette">Maisonette</option>
-          <option value="Apartment">Apartment</option>
+          <option value="DETACHED">Detached House</option>
+          <option value="MAISONETTE">Maisonette</option>
+          <option value="APARTMENT">Apartment</option>
         </select>
-      </div>
-      <button type="submit" [disabled]="!ownerForm.valid">Update Owner</button>
-      <button type="button" (click)="ownerForm.reset()">Clear Form</button>
+      </div> -->
+      <button type="submit" class="btn btn-success btn-lg" [disabled]="!ownerForm.valid">Update Owner</button>
+      <button type="button" class="btn btn-secondary btn-sm" (click)="ownerForm.reset()">Clear Form</button>
     </form>
   
-    <button class="delete-btn" (click)="onDelete()">Delete Owner</button>
   </div>
   

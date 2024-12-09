@@ -1,6 +1,6 @@
 .repairs-container {
-    max-width: 800px;
-    margin: 20px auto;
+    width: 100%;
+    margin: auto;
     font-family: Arial, sans-serif;
   
     #headRepair {
@@ -16,11 +16,11 @@
       th, td {
         border: 1px solid #ddd;
         padding: 8px;
-        text-align: left;
+        text-align: center;
       }
   
       th {
-        background-color: #f4f4f4;
+        background-color: #f2f2f2;
       }
   
       tr:nth-child(even) {

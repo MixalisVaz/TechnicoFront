@@ -1,9 +1,8 @@
 <div class="repairs-container">
   <div id="headReapir">
     <h2 id="RepairList">Repair List</h2>   
-    <!-- <button id="createOwner" (click)="router.navigate(['/repair/create'])">Create Repair</button> -->
+    <button id="createRepair" (click)="router.navigate(['create-repair'])">Create Repair</button>
    
-    <h3 id="createRepair">create repair</h3>
   </div>
 
   <table class="repairs-table">
@@ -15,7 +14,7 @@
         <th>Type</th>
         <th>Cost</th>
         <th>Address</th>
-        <th>Owner</th>
+        <th>Owner Vat Number</th>
         <th>Description</th>
         <th>Actions</th>
       </tr>
@@ -28,10 +27,11 @@
         <td>{{ repair.repairType }}</td>
         <td>{{ repair.repairCost }}</td>
         <td>{{ repair.repairAddress }}</td>        
-        <td>{{ repair.property }}</td>
+        <td>{{ repair.property.owner.vatNumber }}</td>
         <td>{{ repair.workToBeDone }}</td>
         <td>
           <button class="update-button" (click)="onUpdate(repair.id)">Update</button>
+          <button class="btn btn-danger btn-sm" (click)="onDelete(repair.id)">Delete</button>
         </td>
       </tr>
     </tbody>

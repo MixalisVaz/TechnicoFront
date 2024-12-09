@@ -1,14 +1,14 @@
-.repairs-container {
+.properties-container {
     max-width: 800px;
     margin: 20px auto;
     font-family: Arial, sans-serif;
   
-    #headRepair {
+    #headProperty {
       text-align: center;
       margin-bottom: 20px;
     }
   
-    .repairs-table {
+    .propertyTable{
       width: 100%;
       border-collapse: collapse;
       margin: 20px 0;
@@ -32,7 +32,7 @@
       }
     }
   
-    .no-repairs-message {
+    .no-properties-message {
       text-align: center;
       color: #777;
       margin-top: 20px;
@@ -52,11 +52,11 @@
       background-color: #0056b3;
     }
   
-    #deleteRepair {
+    #deleteProperty {
       background-color: #dc3545;
     }
   
-    #deleteRepair:hover {
+    #deleteProperty:hover {
       background-color: #b21f2d;
     }
   }

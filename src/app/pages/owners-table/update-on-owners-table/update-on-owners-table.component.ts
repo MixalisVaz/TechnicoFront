@@ -4,29 +4,25 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { PropertyService } from '../../../service/propertyService.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Property } from '../../../domain/property';
-import { PropertyType } from '../../../domain/propertyType.enum';
+import { AuthService } from '../../../service/AuthService.service';
 
 @Component({
   selector: 'app-update-property',
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule, FormsModule],
-  templateUrl: './update-property.component.html',
-  styleUrls: ['./update-property.component.scss']
+  templateUrl: './update-on-owners-table.component.html',
+  styleUrls: ['./update-on-owners-table.component.scss']
 })
-export class UpdatePropertyComponent implements OnInit {
+export class UpdateOnOwnersTableComponent implements OnInit {
 
   propertyForm: FormGroup;
   propertyId: number = 0; 
   property!: Property;
 
-  propertyTypeOptions = Object.keys(PropertyType).map((key) => ({
-    key,
-    value: PropertyType[key as keyof typeof PropertyType]
-  }));
-
   constructor( 
     private fb: FormBuilder,
     private propertyService: PropertyService,
+    private authService: AuthService,
     private route: ActivatedRoute,
     private router: Router) {
 
@@ -41,7 +37,7 @@ export class UpdatePropertyComponent implements OnInit {
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
-      this.propertyId = Number(id); // Convert to number
+      this.propertyId = Number(id); 
     } else {
       console.warn('No property ID provided in route');
     }
@@ -66,7 +62,7 @@ export class UpdatePropertyComponent implements OnInit {
       this.propertyService.updateProperty(updatedProperty, propertyId).subscribe({
         next: () => {
           console.log('Property successfully updated!');
-          this.router.navigate(['/properties']);
+          this.router.navigate([`/owners-table/${this.authService.getCurrentUserName()}`]);
         },
         error: (error) => {
           console.error('Error updating property:', error);
@@ -90,4 +86,6 @@ export class UpdatePropertyComponent implements OnInit {
       });
     }
   }
+
+
 }
