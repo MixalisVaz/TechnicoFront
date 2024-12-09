@@ -32,7 +32,8 @@
       }
 
       input,
-      select {
+      select,
+      textarea {
         padding: 0.7rem;
         font-size: 1rem;
         border: 1px solid #ccc;
@@ -44,6 +45,8 @@
           outline: none;
         }
       }
+      
+    
     }
 
     button {
