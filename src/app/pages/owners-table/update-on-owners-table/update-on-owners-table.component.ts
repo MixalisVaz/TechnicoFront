@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { PropertyService } from '../../../service/propertyService.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Property } from '../../../domain/property';
+import { AuthService } from '../../../service/AuthService.service';
 
 @Component({
   selector: 'app-update-property',
@@ -21,6 +22,7 @@ export class UpdateOnOwnersTableComponent implements OnInit {
   constructor( 
     private fb: FormBuilder,
     private propertyService: PropertyService,
+    private authService: AuthService,
     private route: ActivatedRoute,
     private router: Router) {
 
@@ -60,7 +62,7 @@ export class UpdateOnOwnersTableComponent implements OnInit {
       this.propertyService.updateProperty(updatedProperty, propertyId).subscribe({
         next: () => {
           console.log('Property successfully updated!');
-          this.router.navigate(['/owners-table/:username']);
+          this.router.navigate([`/owners-table/${this.authService.getCurrentUserName()}`]);
         },
         error: (error) => {
           console.error('Error updating property:', error);

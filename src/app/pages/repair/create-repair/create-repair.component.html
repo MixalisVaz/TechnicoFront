@@ -44,8 +44,8 @@
         placeholder="Enter repair address"
       />
     </div>
-    <div>
-      <label for="address">Property Id:</label>
+    <div *ngIf="componentType==='ADMIN'">
+      <label for="propertyId">Property Id:</label>
       <input
         id="propertyId"
         type="text"

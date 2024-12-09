@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PropertyrepairService } from '../../service/property-repair.service';
 import { CommonModule } from '@angular/common';
 import { Repair } from '../../domain/repair';
@@ -16,7 +16,7 @@ import { UpdaterepairComponent } from './update-repair/update-repair.component';
 export class RepairComponent implements OnInit {
   repairs: Repair[] = [];
 
-  constructor(public router: Router, private propertyrepairService: PropertyrepairService ) {}
+  constructor(public router: Router, private propertyrepairService: PropertyrepairService, private route: ActivatedRoute ) {}
 
   ngOnInit(): void {
     this.loadRepairs();
@@ -42,6 +42,11 @@ export class RepairComponent implements OnInit {
       });
     }
   }
+
+navigateToCreateRepair(){
+  let propertyId = this.route.snapshot.paramMap.get('id')!;
+  this.router.navigate([`property/${propertyId}/update-repairs-table/create-repair`]);
+}
 
   }
 

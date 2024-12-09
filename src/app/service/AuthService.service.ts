@@ -12,12 +12,14 @@ export class AuthService {
   constructor(private http: HttpClient) {}
 
 
-  login(credentials: { username: string; password: string }): Observable<{ role: string; vatNumber: string }> {
+  login(credentials: { username: string; password: string }): Observable<{ role: string; vatNumber: string; username:string }> {
     return new Observable((observer) => {
-        this.http.post<{ role: string; vatNumber: string }>(this.loginUrl, credentials).subscribe({
+        this.http.post<{ role: string; vatNumber: string; username:string }>(this.loginUrl, credentials).subscribe({
             next: (response) => {
                 this.currentUsername = credentials.username;
-                localStorage.setItem('vatNumber', response.vatNumber); 
+                localStorage.setItem('vatNumber', response.vatNumber);
+                localStorage.setItem('username', credentials.username); 
+                console.log(response);
                 observer.next(response);
                 observer.complete();
             },
@@ -33,7 +35,9 @@ getCurrentVatNumber(): string | null {
     return localStorage.getItem('vatNumber');
 }
 
-
+getCurrentUserName(): string | null {
+    return localStorage.getItem('username');
+}
 
 }
 
