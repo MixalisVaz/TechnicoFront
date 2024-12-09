@@ -20,7 +20,7 @@
         <input id="propertyType" formControlName="propertyType" type="text">
       </div>
       
-      <button type="submit" [disabled]="!propertyForm.valid">Update Property</button>
-      <button type="button" (click)="propertyForm.reset()">Clear Form</button>
+      <button type="submit" class="btn btn-success btn-lg" [disabled]="!propertyForm.valid">Update Property</button>
+      <button type="button" class="btn btn-secondary btn-sm" (click)="propertyForm.reset()">Clear Form</button>
     </form>
   </div>
