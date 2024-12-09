@@ -31,7 +31,9 @@ export const routes: Routes = [
     { path: 'owner/:vatNumber/update', component: UpdateOwnerComponent },
 
     { path: 'create-owner', component: CreateOwnerComponent },
-    { path: 'create-repair', component: CreateRepairComponent},
+    { path: 'create-repair', component: CreateRepairComponent},//for admin
+    {path: 'property/:id/update-repairs-table/create-repair', component: CreateRepairComponent}, //for Owner through property
+    {path: 'properties/:id/repairs/create',component: CreateRepairComponent}, //for admin through property
     {path: 'owners/:vatNumber/properties', component:ShowPropertiesComponent},
 
 

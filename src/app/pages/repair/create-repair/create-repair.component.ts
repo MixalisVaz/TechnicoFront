@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { PropertyrepairService } from '../../../service/property-repair.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-repair',
@@ -15,8 +15,11 @@ export class CreateRepairComponent {
   createRepairForm: FormGroup;
   repairType = ['PAINTING', 'INSULATION', 'FRAMES', 'PLUMBING', 'ELECTRICAL_WORK'];
   repairStatus = ['PENDING', 'IN_PROGRESS', 'COMPLETE'];
+  componentType? : "ADMIN" | "OWNER"
+  propertyId? : string;
 
-  constructor(private fb: FormBuilder, private propertyrepairService: PropertyrepairService, public router: Router) {
+  constructor(private fb: FormBuilder, private propertyrepairService: PropertyrepairService, public router: Router, route: ActivatedRoute) {
+    
     this.createRepairForm = this.fb.group({
       scheduledRepairDate: ['', Validators.required],
       repairStatus: ['', Validators.required],
@@ -26,9 +29,22 @@ export class CreateRepairComponent {
       workToBeDone: ['', Validators.required],
       propertyId: ['',Validators.required]
     });
+    this.propertyId = route.snapshot.paramMap.get('id')!;
+    if(this.propertyId){
+      this.componentType = "OWNER"
+      this.createRepairForm.get("propertyId")?.clearValidators();
+    }else{
+      this.componentType="ADMIN"
+    }
+    
   }
 
+  
+
   getFromForm(){
+    if(this.componentType==='OWNER'){
+      this.createRepairForm.get("propertyId")?.setValue(this.propertyId)
+    }
     return { 
       ...this.createRepairForm.value,
       property:{
@@ -43,8 +59,11 @@ export class CreateRepairComponent {
         next: (response) => {
           console.log('Repair created successfully', response);
           alert('Repair created successfully!');
-          this.router.navigate(['repairs']);
-
+          if(this.componentType==='OWNER'){
+            this.router.navigate([`property/${this.propertyId}/update-repairs-table`]);
+          }else{
+            this.router.navigate(['repairs']);
+          }
         },
         error: (error) => {
           console.error('Error creating repair', error);

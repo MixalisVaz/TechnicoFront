@@ -51,6 +51,9 @@ export class ShowRepairsComponent implements OnInit{
     }
   }
 
-
+  navigateToCreateRepair(){
+    let propertyId = this.route.snapshot.paramMap.get('id')!;
+    this.router.navigate([`properties/${propertyId}/repairs/create`]);
+  }
 
 }
