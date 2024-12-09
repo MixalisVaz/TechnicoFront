@@ -1,12 +1,18 @@
 .repairs-container {
-    width: 100%;
-    margin: auto;
-    font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  background-color: #f4f4f4; 
+  padding: 20px;
   
-    #headRepair {
-      text-align: center;
+    #RepairList {
+      font-size: 2rem;
+      font-weight: bold;
       margin-bottom: 20px;
+      align-items: center;
     }
+
   
     .repairs-table {
       width: 100%;
