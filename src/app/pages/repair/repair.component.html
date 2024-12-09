@@ -14,7 +14,7 @@
         <th>Type</th>
         <th>Cost</th>
         <th>Address</th>
-        <th>Owner</th>
+        <th>Owner Vat Number</th>
         <th>Description</th>
         <th>Actions</th>
       </tr>
@@ -27,7 +27,7 @@
         <td>{{ repair.repairType }}</td>
         <td>{{ repair.repairCost }}</td>
         <td>{{ repair.repairAddress }}</td>        
-        <td>{{ repair.property }}</td>
+        <td>{{ repair.property.owner.vatNumber }}</td>
         <td>{{ repair.workToBeDone }}</td>
         <td>
           <button class="update-button" (click)="onUpdate(repair.id)">Update</button>
