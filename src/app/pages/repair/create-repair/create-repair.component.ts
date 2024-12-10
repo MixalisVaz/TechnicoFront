@@ -15,7 +15,7 @@ export class CreateRepairComponent {
   createRepairForm: FormGroup;
   repairType = ['PAINTING', 'INSULATION', 'FRAMES', 'PLUMBING', 'ELECTRICAL_WORK'];
   repairStatus = ['PENDING', 'IN_PROGRESS', 'COMPLETE'];
-  componentType? : "ADMIN" | "OWNER"
+  componentType? : "ADMIN" | "PROPERTY_OWNER"
   propertyId? : string;
 
   constructor(private fb: FormBuilder, private propertyrepairService: PropertyrepairService, public router: Router, route: ActivatedRoute) {
@@ -31,7 +31,7 @@ export class CreateRepairComponent {
     });
     this.propertyId = route.snapshot.paramMap.get('id')!;
     if(this.propertyId){
-      this.componentType = "OWNER"
+      this.componentType = "PROPERTY_OWNER"
       this.createRepairForm.get("propertyId")?.clearValidators();
     }else{
       this.componentType="ADMIN"
@@ -42,7 +42,7 @@ export class CreateRepairComponent {
   
 
   getFromForm(){
-    if(this.componentType==='OWNER'){
+    if(this.componentType==='PROPERTY_OWNER'){
       this.createRepairForm.get("propertyId")?.setValue(this.propertyId)
     }
     return { 
@@ -59,7 +59,7 @@ export class CreateRepairComponent {
         next: (response) => {
           console.log('Repair created successfully', response);
           alert('Repair created successfully!');
-          if(this.componentType==='OWNER'){
+          if(this.componentType==='PROPERTY_OWNER'){
             this.router.navigate([`property/${this.propertyId}/update-repairs-table`]);
           }else{
             this.router.navigate(['repairs']);

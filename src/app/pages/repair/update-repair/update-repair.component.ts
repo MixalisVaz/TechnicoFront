@@ -13,9 +13,11 @@ import { Repair } from '../../../domain/repair';
   styleUrl: './update-repair.component.scss'
 })
 export class UpdaterepairComponent implements OnInit {
-  repairForm: FormGroup;
+  updateRepairForm: FormGroup;
   repairId: string = '';
   repair!:Repair;
+  componentType? : "ADMIN" | "PROPERTY_OWNER"
+  propertyId? : string;
 
   constructor(
     private fb: FormBuilder,
@@ -23,7 +25,7 @@ export class UpdaterepairComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router
   ) {
-    this.repairForm = this.fb.group({
+    this.updateRepairForm = this.fb.group({
       id: [''],
       scheduledRepairDate: [''],
       repairStatus: [''],
@@ -33,22 +35,44 @@ export class UpdaterepairComponent implements OnInit {
       workToBeDone: [''],
       property: [''],
     });
+    this.propertyId = route.snapshot.paramMap.get('id')!;
+    if(this.propertyId){
+      this.componentType = "PROPERTY_OWNER"
+      this.updateRepairForm.get("propertyId")?.clearValidators();
+    }else{
+      this.componentType="ADMIN"
+    }
+  }
+
+  getFromForm(){
+    if(this.componentType==='PROPERTY_OWNER'){
+      this.updateRepairForm.get("propertyId")?.setValue(this.propertyId)
+    }
+    return { 
+      ...this.updateRepairForm.value,
+      property:{
+        id: this.updateRepairForm.get("propertyId")?.value
+      }
+    }
   }
 
   ngOnInit(): void {
     this.repairId = this.route.snapshot.paramMap.get('id')!;    
     this.repairService.getRepairById(this.repairId).subscribe((repair) => {
-      this.repairForm.patchValue(repair);
+      this.updateRepairForm.patchValue(repair);
     });
   }
 
   onSubmit() {
-    this.repairService.updateRepair(this.repairId, this.repairForm.value).subscribe(() => {
+    if (this.updateRepairForm.valid) {
+    this.repairService.updateRepair(this.repairId, this.updateRepairForm.value).subscribe(() => {
       alert('Repair updated successfully!');
+      if(this.componentType==='PROPERTY_OWNER'){
+        this.router.navigate([`property/${this.propertyId}/update-repairs-table`]);
+      }else{
       this.router.navigate(['/repairs']);
+    }
     });
   }
-
-
-
+}
 }

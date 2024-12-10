@@ -1,6 +1,6 @@
 <div class="update-repair-container">
   <h1 class="form-title">Update Property Repair</h1>
-  <form [formGroup]="repairForm" (ngSubmit)="onSubmit()" class="repair-form">
+  <form [formGroup]="updateRepairForm" (ngSubmit)="onSubmit()" class="repair-form">
     <div class="form-group">
       <label for="date" class="form-label">Date:</label>
       <input
@@ -63,7 +63,7 @@
       <button
         type="button"
         class="btn btn-secondary btn-sm"
-        (click)="repairForm.reset()"
+        (click)="updateRepairForm.reset()"
       >
         Clear Form
       </button>

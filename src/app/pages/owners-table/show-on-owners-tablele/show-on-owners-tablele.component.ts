@@ -36,10 +36,10 @@ export class ShowRepairsOnOwnersTableComponent implements OnInit{
     });
   }
 
-  onUpdate(repairId:number): void {
-    this.router.navigate([`/repair/${repairId}/update-on-show-owners-table`]); 
-    this.loadRepairs();
-  }
+  // onUpdate(repairId:number): void {
+  //   this.router.navigate([`/repair/${repairId}/update-on-show-owners-table`]); 
+  //   this.loadRepairs();
+  // }
 
   
   onDelete(repairId: number): void {
@@ -55,6 +55,9 @@ export class ShowRepairsOnOwnersTableComponent implements OnInit{
     let propertyId = this.route.snapshot.paramMap.get('id')!;
     this.router.navigate([`property/${propertyId}/update-repairs-table/create-repair`]);
   }
-
+  navigateToUpdateRepair(){
+     let propertyId = this.route.snapshot.paramMap.get('id')!;
+     this.router.navigate([`property/${propertyId}/update-repairs-table/update-repair`]);
+  }
 }
 
