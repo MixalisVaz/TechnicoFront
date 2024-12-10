@@ -31,6 +31,8 @@
     .owners-table{
       border-collapse: collapse;
       transform: translateX(100%);
+      font-size: small;
+      width: 100%;
       opacity: 0;
       animation: slideInRight 1.5s ease-out forwards;
       animation-delay: 0.3s; // Starts after the title animation
@@ -92,7 +94,16 @@
     background-color: lightgray;
   }
 
+  .buttons{
+    display: flex;
+    height: 3rem;
+    align-items: center;
+  }
+
+
+
   .btn-sm {
     margin-right: 5px;
     cursor: pointer;
+
   }

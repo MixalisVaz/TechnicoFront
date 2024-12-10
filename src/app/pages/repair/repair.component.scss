@@ -90,6 +90,15 @@
       tr:hover {
         background-color: lightgray;
       }
+
+
+      .buttons{
+        display: flex;
+        height: 3rem;
+        // justify-content: flex-end;
+        align-items: center;
+      }
+      
   
       .btn-sm {
         margin-right: 5px;

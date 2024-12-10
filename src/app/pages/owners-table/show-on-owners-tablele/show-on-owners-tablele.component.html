@@ -1,9 +1,14 @@
 <div class="repairs-container">
+  <div id="test">
     <div id="headRepair">
-      <h2 id="RepairList">Repairs for Property ID: {{ propertyId }}</h2>  
+      <h2 class="RepairList">Repairs for Property ID: {{ propertyId }}</h2>  
     </div>
+    <div>
+      <button id="createRepair" (click)="navigateToCreateRepair()">Create Repair</button>
+    
+    </div>
+  </div>
 
-    <button id="createRepair" (click)="navigateToCreateRepair()">Create Repair</button>
     
     <table class="repairs-table">
       <thead>
