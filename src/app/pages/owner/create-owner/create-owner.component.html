@@ -8,11 +8,11 @@
       </div>
       <div>
         <label for="name">Name:</label>
-        <input id="name" formControlName="name" type="text" placeholder="Enter Name">
+        <input id="name" formControlName="firstName" type="text" placeholder="Enter Name">
       </div>
       <div>
         <label for="surname">Surname:</label>
-        <input id="surname" formControlName="surname" type="text" placeholder="Enter Surname">
+        <input id="surname" formControlName="lastName" type="text" placeholder="Enter Surname">
       </div>
       <div>
         <label for="address">Address:</label>
@@ -28,21 +28,32 @@
       </div>
       <div>
         <label for="username">Username:</label>
-        <input id="username" formControlName="username" type="text" placeholder="Enter Username">
+        <input id="username" formControlName="userName" type="text" placeholder="Enter Username">
       </div>
       <div>
         <label for="password">Password:</label>
         <input id="password" formControlName="password" type="password" placeholder="Enter Password">
       </div>
+
+      <div>
+        <label for="role">role Type:</label>
+        <select id="role" formControlName="role" required>
+          <option value="" disabled selected>Select role</option>
+          <option value="PROPERTY_OWNER">Property Owner</option>
+          <option value="ADMIN">Admin</option>
+        </select>
+      </div>
+
       <div>
         <label for="propertyType">Property Type:</label>
-        <select id="propertyType" formControlName="propertyType">
+        <select id="propertyType" formControlName="properties">
           <option value="" disabled>Select Property Type</option>
           <option value="DETACHED">Detached House</option>
           <option value="MAISONETTE">Maisonette</option>
           <option value="APARTMENT">Apartment</option>
         </select>
       </div>
+
       <button type="submit" class="btn btn-outline-dark btn-lg btn-sm" [disabled]="!createOwnerForm.valid">Create Owner</button>
       <button type="button" class="btn btn-outline-dark btn-sm" (click)="createOwnerForm.reset()">Clear Form</button>
     </form>

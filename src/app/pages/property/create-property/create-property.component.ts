@@ -23,6 +23,7 @@ export class CreatePropertyComponent {
   
 
   constructor(private fb: FormBuilder, private propertyService: PropertyService, public router: Router) {
+    
     this.createPropertyForm = this.fb.group({
       propertyIdentificationE9Number: ['', [Validators.required]],
       address: ['', [Validators.required]],

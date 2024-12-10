@@ -17,21 +17,30 @@ export class CreateOwnerComponent {
   constructor(private fb: FormBuilder, private ownerService: OwnerService, public router: Router) {
     this.createOwnerForm = this.fb.group({
       vatNumber: ['', [Validators.required, Validators.pattern(/^[0-9]{9}$/)]],
-      name: ['', Validators.required],
-      surname: ['', Validators.required],
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
       address: ['', Validators.required],
       phoneNumber: ['', [Validators.required, Validators.pattern(/^\+?[0-9]{10,15}$/)]],
       email: ['', [Validators.required, Validators.email]],
-      username: ['', Validators.required],
+      userName: ['', Validators.required],
       password: ['', Validators.required],
-      propertyType: ['', Validators.required]
+      role: ['PROPERTY_OWNER', Validators.required], 
+      properties: ['', Validators.required] 
     });
   }
-  
+
+  getFromForm() {
+    const formValue = this.createOwnerForm.value;
+    return {
+      ...formValue,
+      properties: [formValue.properties] 
+    };
+  }
 
   onSubmit(): void {
     if (this.createOwnerForm.valid) {
-      this.ownerService.createOwner(this.createOwnerForm.value).subscribe({
+      const formattedData = this.getFromForm();
+      this.ownerService.createOwner(formattedData).subscribe({
         next: (response) => {
           console.log('Owner created successfully', response);
           alert('Owner created successfully!');
@@ -46,5 +55,4 @@ export class CreateOwnerComponent {
       alert('Please fill out the form correctly before submitting.');
     }
   }
-  
 }

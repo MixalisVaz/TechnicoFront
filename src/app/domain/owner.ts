@@ -3,7 +3,7 @@ export interface Owner {
 
     userName: string;
     password: string;
-    role: string;
+    role: 'PROPERTY_OWNER' | 'ADMIN';
     vatNumber: string;
     firstName: string;
     lastName: string;

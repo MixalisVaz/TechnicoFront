@@ -26,21 +26,11 @@ export class OwnerService {
     return this.http.get<any>(`${this.baseUrl}/vat/${vatNumber}`); // /update
   }
 
-  // updateOwner(id: string, owner: any): Observable<any> {
-  //   return this.http.put(`${this.baseUrl}/${id}`, owner);
-  // }
-
-  // updateOwner(ownervatNumber: string, owner: any): Observable<any> {
-  //   return this.http.put(`${this.baseUrl}/${ownervatNumber}`, owner);
-  // }
 
   updateOwner(vatNumber: string, owner: any): Observable<any> {
     return this.http.put(`${this.baseUrl}/user/update-by-vatNumber/${vatNumber}`, owner);
   }
 
-  // deleteOwner(id: string): Observable<void> {
-  //   return this.http.delete<void>(`${this.baseUrl}/${id}`);
-  // }
 
   deleteOwner(vatNumber: string): Observable<void> {
     return this.http.delete<void>(`${this.baseUrl}/user/delete-by-vat/${vatNumber}`);
