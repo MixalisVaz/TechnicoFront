@@ -40,8 +40,15 @@ getCurrentUserName(): string | null {
     return localStorage.getItem('username');
 }
 
-getRole(): string | null {
-    return localStorage.getItem('role');
+getRole(): "ADMIN" | "PROPERTY_OWNER" | null {
+    let role= localStorage.getItem('role');
+    if(role==="ADMIN"){
+        return "ADMIN"
+    }else if(role==="PROPERTY_OWNER"){
+        return "PROPERTY_OWNER"
+    }else{
+        return null
+    }
 }
 
 }
