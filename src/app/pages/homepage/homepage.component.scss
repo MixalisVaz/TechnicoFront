@@ -14,16 +14,16 @@
   
   .carousel-item {
     min-width: 100%;
-    height: 50vh;
-    position: absolute;      // Τοποθετεί όλα τα items το ένα πάνω στο άλλο
+    height: 65vh;
+    position: absolute;  
     top: 0;
     left: 0;
-    visibility: hidden;      // Κρύβει όλα τα items εκτός από το ενεργό
+    visibility: hidden; 
   }
   
   .carousel-item.active {
-    visibility: visible;     // Εμφανίζει το ενεργό item
-    position: relative;      // Το ενεργό item παίρνει θέση στη ροή του layout
+    visibility: visible;
+    position: relative;
   }
   
   .carousel-item img {
