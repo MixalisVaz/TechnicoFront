@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angul
 import { ActivatedRoute, Router } from '@angular/router';
 import { PropertyrepairService } from '../../../service/property-repair.service';
 import { Repair } from '../../../domain/repair';
+import { AuthService } from '../../../service/AuthService.service';
 
 @Component({
   selector: 'app-updaterepair',
@@ -23,6 +24,7 @@ export class UpdaterepairComponent implements OnInit {
     private fb: FormBuilder,
     private repairService: PropertyrepairService,
     private route: ActivatedRoute,
+    private authService:AuthService,
     private router: Router
   ) {
     this.updateRepairForm = this.fb.group({
@@ -36,13 +38,11 @@ export class UpdaterepairComponent implements OnInit {
       property: [''],
     });
     this.propertyId = route.snapshot.paramMap.get('id')!;
-    if(this.propertyId){
-      this.componentType = "PROPERTY_OWNER"
+    this.componentType=this.authService.getRole();
+    if(this.componentType==="PROPERTY_OWNER"){
       this.updateRepairForm.get("propertyId")?.clearValidators();
-    }else{
-      this.componentType="ADMIN"
-    }
   }
+}
 
   getFromForm(){
     if(this.componentType==='PROPERTY_OWNER'){
