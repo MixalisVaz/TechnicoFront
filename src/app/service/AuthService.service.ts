@@ -18,7 +18,7 @@ export class AuthService {
             next: (response) => {
                 this.currentUsername = credentials.username;
                 localStorage.setItem('vatNumber', response.vatNumber);
-                localStorage.setItem('username', credentials.username); 
+                localStorage.setItem('username', credentials.username);
                 console.log(response);
                 observer.next(response);
                 observer.complete();
