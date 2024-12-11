@@ -14,12 +14,13 @@ export class AuthService {
 
   login(credentials: { username: string; password: string }): Observable<{ role: string; vatNumber: string; username:string }> {
     return new Observable((observer) => {
-        this.http.post<{ role: string; vatNumber: string; username:string }>(this.loginUrl, credentials).subscribe({
+        this.http.post<{ role: string; vatNumber: string; username:string, id:string }>(this.loginUrl, credentials).subscribe({
             next: (response) => {
                 this.currentUsername = credentials.username;
                 localStorage.setItem('vatNumber', response.vatNumber);
                 localStorage.setItem('username', credentials.username);
                 localStorage.setItem('role', response.role);
+                localStorage.setItem('userId', response.id);
                 console.log(response);
                 observer.next(response);
                 observer.complete();
@@ -51,6 +52,9 @@ getRole(): "ADMIN" | "PROPERTY_OWNER" | undefined {
     }
 }
 
+getUserId():string | null{
+    return localStorage.getItem('userId');
 }
 
+}
 

@@ -19,7 +19,8 @@ export class CreateRepairComponent {
   componentType? : "ADMIN" | "PROPERTY_OWNER"
   propertyId? : string;
 
-  constructor(private authService:AuthService,
+  constructor(
+    private authService:AuthService,
     private fb: FormBuilder,
     private propertyrepairService: PropertyrepairService, 
     public router: Router, route: ActivatedRoute) {

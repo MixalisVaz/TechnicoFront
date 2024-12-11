@@ -23,7 +23,7 @@
           </option>
         </select>
       </div>
-      <div>
+      <div *ngIf="componentType==='ADMIN'">
         <label for="ownerId">Owner Id:</label>
         <input id="ownerId" formControlName="ownerId" type="text" placeholder="Enter Owner Id Number">
       </div>
