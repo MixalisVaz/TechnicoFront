@@ -1,4 +1,59 @@
-#homeimg{
-    height: 28rem;
-    width: 78.5rem;
-}
+.carousel-container {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    margin: auto;
+    overflow: hidden;
+  }
+
+.carousel {
+    display: flex;
+    transition: transform 0.5s ease;
+    position: relative;
+  }
+  
+  .carousel-item {
+    min-width: 100%;
+    height: 50vh;
+    position: absolute;      // Τοποθετεί όλα τα items το ένα πάνω στο άλλο
+    top: 0;
+    left: 0;
+    visibility: hidden;      // Κρύβει όλα τα items εκτός από το ενεργό
+  }
+  
+  .carousel-item.active {
+    visibility: visible;     // Εμφανίζει το ενεργό item
+    position: relative;      // Το ενεργό item παίρνει θέση στη ροή του layout
+  }
+  
+  .carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  
+  .nav-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 10;
+  }
+  
+  .nav-button.prev {
+    left: 10px;
+  }
+  
+  .nav-button.next {
+    right: 10px;
+  }
+  
+  .nav-button:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+  
