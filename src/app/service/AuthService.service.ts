@@ -19,6 +19,7 @@ export class AuthService {
                 this.currentUsername = credentials.username;
                 localStorage.setItem('vatNumber', response.vatNumber);
                 localStorage.setItem('username', credentials.username);
+                localStorage.setItem('role', response.role);
                 console.log(response);
                 observer.next(response);
                 observer.complete();
@@ -37,6 +38,10 @@ getCurrentVatNumber(): string | null {
 
 getCurrentUserName(): string | null {
     return localStorage.getItem('username');
+}
+
+getRole(): string | null {
+    return localStorage.getItem('role');
 }
 
 }
