@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { PropertyrepairService } from '../../../service/property-repair.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from '../../../service/AuthService.service';
 
 @Component({
   selector: 'app-create-repair',
@@ -18,7 +19,10 @@ export class CreateRepairComponent {
   componentType? : "ADMIN" | "PROPERTY_OWNER"
   propertyId? : string;
 
-  constructor(private fb: FormBuilder, private propertyrepairService: PropertyrepairService, public router: Router, route: ActivatedRoute) {
+  constructor(private authService:AuthService,
+    private fb: FormBuilder,
+    private propertyrepairService: PropertyrepairService, 
+    public router: Router, route: ActivatedRoute) {
     
     this.createRepairForm = this.fb.group({
       scheduledRepairDate: ['', Validators.required],
@@ -29,13 +33,12 @@ export class CreateRepairComponent {
       workToBeDone: ['', Validators.required],
       propertyId: ['',Validators.required]
     });
+    
     this.propertyId = route.snapshot.paramMap.get('id')!;
-    if(this.propertyId){
-      this.componentType = "PROPERTY_OWNER"
+    this.componentType=this.authService.getRole();
+    if(this.componentType==="PROPERTY_OWNER"){
       this.createRepairForm.get("propertyId")?.clearValidators();
-    }else{
-      this.componentType="ADMIN"
-    }
+  }
     
   }
 

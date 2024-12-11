@@ -35,7 +35,7 @@
           <td>{{ repair.property.owner.vatNumber }}</td>
           <td>{{ repair.workToBeDone }}</td>
           <td>
-            <button class="btn btn-primary btn-sm" id="updateRepair" (click)="navigateToUpdateRepair()">Update</button>
+            <button class="btn btn-primary btn-sm" id="updateRepair" (click)="navigateToUpdateRepair(repair.id)">Update</button>
             <button class="btn btn-danger btn-sm" id="deleteRepair" (click)="onDelete(repair.id)">Delete</button>
           </td>
         </tr>

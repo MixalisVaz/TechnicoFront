@@ -57,7 +57,7 @@ export class UpdaterepairComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.repairId = this.route.snapshot.paramMap.get('id')!;    
+    this.repairId = this.route.snapshot.paramMap.get('repairId')!;    
     this.repairService.getRepairById(this.repairId).subscribe((repair) => {
       this.updateRepairForm.patchValue(repair);
     });

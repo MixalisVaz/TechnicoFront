@@ -55,9 +55,9 @@ export class ShowRepairsOnOwnersTableComponent implements OnInit{
     let propertyId = this.route.snapshot.paramMap.get('id')!;
     this.router.navigate([`property/${propertyId}/update-repairs-table/create-repair`]);
   }
-  navigateToUpdateRepair(){
+  navigateToUpdateRepair(repairId:number){
      let propertyId = this.route.snapshot.paramMap.get('id')!;
-     this.router.navigate([`property/${propertyId}/update-repairs-table/update-repair`]);
+     this.router.navigate([`property/${propertyId}/update-repairs-table/update-repair/${repairId}`]);
   }
 }
 
