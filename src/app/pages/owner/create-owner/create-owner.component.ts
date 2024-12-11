@@ -25,21 +25,23 @@ export class CreateOwnerComponent {
       userName: ['', Validators.required],
       password: ['', Validators.required],
       role: ['PROPERTY_OWNER', Validators.required], 
-      properties: ['', Validators.required] 
+      // properties: ['', Validators.required] 
     });
   }
 
-  getFromForm() {
-    const formValue = this.createOwnerForm.value;
-    return {
-      ...formValue,
-      properties: [formValue.properties] 
-    };
-  }
+  // getFromForm() {
+  //   const formValue = this.createOwnerForm.value;
+  //   return {
+  //     ...formValue,
+  //     properties: [formValue.properties] 
+  //   };
+  // }
 
   onSubmit(): void {
+    console.log(this.createOwnerForm);
+    
     if (this.createOwnerForm.valid) {
-      const formattedData = this.getFromForm();
+      const formattedData = this.createOwnerForm.value;
       this.ownerService.createOwner(formattedData).subscribe({
         next: (response) => {
           console.log('Owner created successfully', response);
