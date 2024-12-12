@@ -1,67 +1,101 @@
 /* General footer styles */
 .footer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: bisque;
-    padding: 20px 0;
-    border-top: 1px solid bisque;
-    font-family: Arial, sans-serif;
-    font-size: 14px;
-    color: #666;
-  }
-  
+  display: flex;
+  justify-content: space-between; /* Space out the left and right sections */
+  background-color: #1a1a1a; /* Dark, elegant background */
+  border-top: 2px solid #d4af37; /* Gold accent border */
+  font-family: 'Roboto', sans-serif; /* Elegant, modern font */
+  color: #fff; /* White text for better contrast */
+  width: 100%; /* Ensure the footer spans the full width of the page */
+  padding: 30px 50px; /* Increased padding for a more spacious and luxurious feel */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between; /* Ensure space between left and right sections */
+  align-items: center;
+  width: 100%; /* Full width */
+  max-width: 1200px; /* Center the content */
+  margin: 0 auto;
+}
+
+.footer-left {
+  flex: 0 0 auto; /* Ensures the left section takes up minimal space */
+  text-align: left;
+  padding: 5px 20px; /* Padding for spacing */
+}
+
+.footer-center {
+  flex: 1;
+  text-align: center;
+  padding: 5px 20px; /* Padding for spacing */
+  display: flex;
+  justify-content: center; /* Center the icons horizontally */
+}
+
+.footer-right {
+  flex: 0 0 auto; /* Ensures the right section takes up minimal space */
+  text-align: right;
+  padding: 5px 20px;
+}
+
+/* Social media icon styles */
+.social-icon {
+  display: inline-block;
+  margin: 0 15px; /* Increased spacing between icons */
+  transition: transform 0.3s ease-in-out;
+}
+
+.social-icon-img {
+  width: 35px; /* Larger icons for more presence */
+  height: 35px;
+  transition: transform 0.3s ease-in-out;
+  margin: 0 8px;
+}
+
+.social-icon-img:hover {
+  transform: scale(1.3); /* Elegant zoom effect */
+}
+
+/* Back to top arrow */
+.back-to-top {
+  display: inline-block;
+  margin-top: 8px;
+  font-size: 16px; /* Slightly larger text for visibility */
+  text-decoration: none;
+  color: #d4af37; /* Gold color for luxury accent */
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px; /* Increased letter spacing for elegance */
+  transition: color 0.3s ease-in-out;
+  margin-left: 20px;
+}
+
+.back-to-top:hover {
+  color: #fff; /* Hover effect changes color to white */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
   .footer-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 90%;
-    max-width: 1200px;
+    flex-direction: column;
+    text-align: center;
   }
-  
+
   .footer-left,
   .footer-center,
   .footer-right {
-    flex: 1;
     text-align: center;
+    padding: 5px 10px; /* Reduced padding for smaller screens */
   }
-  
-  .footer-left {
-    text-align: left;
-  }
-  
-  .footer-right {
-    text-align: right;
-  }
-  
-  /* Social media icon container */
+
   .social-icon {
-    display: inline-block;
-    margin: 0 15px;
+    margin: 0 10px; /* Adjust spacing for smaller screens */
   }
-  
-  /* Social media icons style */
-  .social-icon-img {
-    width: 30px; /* Set a fixed width for the icons */
-    height: 30px; /* Set a fixed height for the icons */
-    transition: transform 0.3s ease-in-out; /* Add transition for hover effect */
-  }
-  
-  .social-icon-img:hover {
-    transform: scale(1.2); /* Slight zoom effect on hover */
-  }
-  
-  /* Back to top arrow */
+
   .back-to-top {
-    display: inline-block;
-    margin-top: 10px;
-    font-size: 16px;
-    text-decoration: none;
-    color: #666;
-    font-weight: bold;
+    margin-left: 0; /* Remove left margin on smaller screens */
+    margin-top: 10px; /* Add top margin for spacing */
   }
-  
-  .back-to-top:hover {
-    color: black;
-  }
-  
+}
