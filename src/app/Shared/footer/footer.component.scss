@@ -94,8 +94,39 @@
     margin: 0 10px; /* Adjust spacing for smaller screens */
   }
 
-  .back-to-top {
-    margin-left: 0; /* Remove left margin on smaller screens */
-    margin-top: 10px; /* Add top margin for spacing */
+  
+  .footer-right .go-to-top {
+    display: inline-block;
+    background-color: #d4af37; /* Gold accent for the button */
+    color: #fff; /* White text for contrast */
+    padding: 12px 20px; /* Spacious padding */
+    font-size: 16px; /* Font size to match footer text */
+    font-weight: bold; /* Bold text for visibility */
+    text-transform: uppercase; /* Uppercase letters for consistency */
+    border: none; /* No border */
+    border-radius: 4px; /* Rounded corners for a modern touch */
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transitions for hover effects */
+    text-align: center;
+    margin-left: 20px; /* Margin to separate it from other content */
   }
+  
+  .footer-right .go-to-top:hover {
+    background-color: #fff; /* Change background color to white on hover */
+    color: #d4af37; /* Change text color to gold on hover */
+    transform: scale(1.1); /* Slight zoom effect for emphasis */
+  }
+  
+  /* For mobile responsiveness */
+  @media (max-width: 768px) {
+    .footer-right .go-to-top {
+      margin-left: 0; /* Remove left margin on smaller screens */
+      margin-top: 10px; /* Add top margin for spacing */
+    }
+  }
+
+
+
+
+
 }
