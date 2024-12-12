@@ -26,12 +26,18 @@ export class AuthService {
                 observer.complete();
             },
             error: (error) => {
+                localStorage.setItem('role', 'GUEST');
                 observer.error(error);
             }
         });
     });
 }
 
+
+logout(): void {
+    localStorage.clear();
+    window.location.href = '/'; 
+  }
 
 getCurrentVatNumber(): string | null {
     return localStorage.getItem('vatNumber');
@@ -55,6 +61,10 @@ getRole(): "ADMIN" | "PROPERTY_OWNER" | undefined {
 getUserId():string | null{
     return localStorage.getItem('userId');
 }
+
+isLoggedIn(): boolean {
+    return !!localStorage.getItem('role');
+  }
 
 }
 

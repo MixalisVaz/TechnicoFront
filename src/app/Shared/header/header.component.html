@@ -10,10 +10,22 @@
 
   <nav class="nav">
     <ul class="nav nav-underline d-flex">
-      <li class="nav-item"><a class="nav-link" [routerLink]="['']">Home</a></li>
+      <li class="nav-item"><a class="nav-link" (click)="navigateHome()">Home</a></li>
       <li class="nav-item"><a class="nav-link" [routerLink]="['about-us']">About Us</a></li>
       <li class="nav-item"><a class="nav-link" [routerLink]="['contact-us']">Contact</a></li>
-      <li class="nav-item"><a class="nav-link" [routerLink]="['sign-in']">Log In</a></li>
+
+      <ng-container *ngIf="!isLoggedIn(); else loggedIn">
+        <li class="nav-item"><a class="nav-link" [routerLink]="['sign-in']">Log In</a></li>
+      </ng-container>
+      <ng-template #loggedIn>
+        <li class="nav-item"><a class="nav-link" (click)="logout()">Log Out</a></li>
+      </ng-template>
+
+
+      <!-- <li class="nav-item"><a class="nav-link" [routerLink]="['sign-in']">Log In</a></li> -->
+
     </ul>
   </nav>
-</header>
+</header> 
+
+

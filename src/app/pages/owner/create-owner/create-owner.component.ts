@@ -29,13 +29,6 @@ export class CreateOwnerComponent {
     });
   }
 
-  // getFromForm() {
-  //   const formValue = this.createOwnerForm.value;
-  //   return {
-  //     ...formValue,
-  //     properties: [formValue.properties] 
-  //   };
-  // }
 
   onSubmit(): void {
     console.log(this.createOwnerForm);

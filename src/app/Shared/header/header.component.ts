@@ -1,14 +1,44 @@
-import { Component } from '@angular/core';
+import { Component , OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { AuthService } from '../../service/AuthService.service';
 
 @Component({
   selector: 'app-header',
-  imports: [RouterModule],
+  standalone: true,
+  imports: [CommonModule , RouterModule],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
 
-  
+  constructor(private authService: AuthService, private router: Router) {}
+
+  ngOnInit(): void {} 
+
+
+
+navigateHome() {
+  if (this.authService.isLoggedIn()) {
+    const role = this.authService.getRole();
+    if (role === 'ADMIN') {
+        this.router.navigate(['admin']);
+    } else if (role === 'PROPERTY_OWNER') {
+        this.router.navigate(['owners-table', this.authService.getCurrentUserName()]);
+    }
+  } else {
+    this.router.navigate(['home']); 
+  }
+}
+
+
+  logout(): void {
+    this.authService.logout();
+  }
+
+  isLoggedIn(): boolean {
+    return this.authService.isLoggedIn();
+  }
 
 }
