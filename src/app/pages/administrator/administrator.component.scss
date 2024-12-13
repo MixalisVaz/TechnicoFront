@@ -1,40 +1,52 @@
 .administrator-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-    font-family: Arial, sans-serif;
-  }
-  
-  .administrator-header {
-    display: flex;
-    gap: 15px;
-    margin-bottom: 30px;
-  
-    button {
-      padding: 10px 20px;
-      font-size: 16px;
-      border: none;
-      border-radius: 5px;
-      background-color: #007bff;
-      color: white;
-      cursor: pointer;
-      transition: background-color 0.3s;
-  
-      &:hover {
-        background-color: #0056b3;
-      }
-    }
-  }
-  
-  .administrator-main {
-    text-align: center;
-  
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  font-family: Arial, sans-serif;
+  position: relative;
+  height: 70vh;
+  overflow: hidden;
+}
 
-  
-    p {
-      font-size: 18px;
-      color: #555;
+.administrator-header {
+  display: flex;
+  margin-top: 280px;
+  gap: 230px;
+  position: absolute;
+  top: 20px;
+  z-index: 10;
+
+  button {
+    padding: 25px 35px; /* Make buttons bigger */
+    font-size: 18px;
+    border: none;
+    border-radius: 8px;
+    background-color: #1a1a1a; /* Black background */
+    color: #fff;
+    cursor: pointer;
+    transition: transform 0.2s;
+
+    &:hover {
+      transform: scale(1.1); /* Slight hover effect */
     }
   }
-  
+}
+
+.carousel {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+
+  .carousel-inner {
+    height: 100%;
+  }
+
+
+    .carousel-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
