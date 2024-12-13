@@ -36,12 +36,14 @@
   padding: 3px 5px; /* Adds space around links for a more comfortable click area */
   border-radius: 5px; /* Smooth rounded corners for buttons */
   transition: all 0.3s ease; /* Smooth transition on hover */
+  cursor: pointer;
 }
 
 .nav-item a:hover {
   background-color: #d4af37; /* Gold background on hover for emphasis */
   color: #2c3e50; /* Dark text for contrast when hovered */
   transform: scale(1.05); /* Slight zoom-in effect for sophistication */
+  cursor: pointer;
 }
 
 .nav-item a::after {
@@ -53,10 +55,12 @@
   height: 2px; /* Thicker underline */
   background-color: #d4af37; /* Gold underline */
   transition: width 0.4s ease; /* Smooth expansion of the underline */
+  cursor: pointer;
 }
 
 .nav-item a:hover::after {
   width: 100%; /* Underline expands fully on hover */
+  cursor: pointer;
 }
 
 /* Responsive Design */
