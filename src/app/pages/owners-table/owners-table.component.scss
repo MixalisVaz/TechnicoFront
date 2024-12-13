@@ -3,11 +3,32 @@
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  background-color: #f4f4f4; 
-  padding: 20px;
+  
+  color: #333;
+  
+
+  background-image: url('/assets/landscaping.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 70vh;
+  object-fit: cover;
+  
+ 
+  position: relative;
+  z-index: 1;
+
+  &::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: inherit; /* Inherit the background image */
+    filter: blur(3px); /* Adjust the blur intensity */
+    z-index: -1;
+  }
 }
 
-#createbutton{
+#createbutton {
   width: 100%;
   display: flex;
   justify-content: flex-end;
@@ -17,6 +38,9 @@
 table {
   width: 100%;
   border-collapse: collapse;
+  background-color: rgba(255, 255, 255, 0.9); /* Slightly transparent white for readability */
+  border-radius: 8px;
+  overflow: hidden;
 }
 
 th, td {
