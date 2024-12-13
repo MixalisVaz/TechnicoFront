@@ -14,7 +14,7 @@
       <li class="nav-item"><a class="nav-link" [routerLink]="['about-us']">About Us</a></li>
       <li class="nav-item"><a class="nav-link" [routerLink]="['contact-us']">Contact</a></li>
 
-      <ng-container *ngIf="!isLoggedIn(); else loggedIn">
+      <ng-container *ngIf="!isLoggedIn; else loggedIn">
         <li class="nav-item"><a class="nav-link" [routerLink]="['sign-in']">Log In</a></li>
       </ng-container>
       <ng-template #loggedIn>

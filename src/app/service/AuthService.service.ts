@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
 export class AuthService {
   private loginUrl = 'http://localhost:8080/technico/api/auth/login'; 
   private currentUsername: string | null = null;
+  private loginNotifier: Subject<boolean> = new Subject();
 
   constructor(private http: HttpClient) {}
 
@@ -21,12 +22,12 @@ export class AuthService {
                 localStorage.setItem('username', credentials.username);
                 localStorage.setItem('role', response.role);
                 localStorage.setItem('userId', response.id);
+                this.notifyAboutLogin(true);
                 console.log(response);
                 observer.next(response);
                 observer.complete();
             },
             error: (error) => {
-                localStorage.setItem('role', 'GUEST');
                 observer.error(error);
             }
         });
@@ -36,6 +37,7 @@ export class AuthService {
 
 logout(): void {
     localStorage.clear();
+    this.notifyAboutLogin(false);
     window.location.href = '/'; 
   }
 
@@ -66,5 +68,16 @@ isLoggedIn(): boolean {
     return !!localStorage.getItem('role');
   }
 
+notifyAboutLogin(login: boolean){
+    this.loginNotifier.next(login)
 }
+
+listenForLogin() {
+    return this.loginNotifier.asObservable();
+}
+
+
+}
+
+
 

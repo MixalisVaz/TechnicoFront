@@ -12,10 +12,15 @@ import { AuthService } from '../../service/AuthService.service';
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent implements OnInit {
+  isLoggedIn: boolean = false;
 
   constructor(private authService: AuthService, private router: Router) {}
 
-  ngOnInit(): void {} 
+  ngOnInit(): void {
+    this.authService.listenForLogin().subscribe((answer:boolean) => {
+      this.isLoggedIn = this.authService.isLoggedIn();
+    })
+  } 
 
 
 
@@ -37,8 +42,8 @@ navigateHome() {
     this.authService.logout();
   }
 
-  isLoggedIn(): boolean {
-    return this.authService.isLoggedIn();
-  }
+  // isLoggedIn(): boolean {
+  //   return this.authService.isLoggedIn();
+  // }
 
 }
