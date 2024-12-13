@@ -5,6 +5,7 @@ import { PropertyService } from '../../../service/propertyService.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Property } from '../../../domain/property';
 import { AuthService } from '../../../service/AuthService.service';
+import { PropertyType } from '../../../domain/propertyType.enum';
 
 @Component({
   selector: 'app-update-property',
@@ -19,6 +20,11 @@ export class UpdateOnOwnersTableComponent implements OnInit {
   propertyId: number = 0; 
   property!: Property;
 
+  propertyTypeOptions = Object.keys(PropertyType).map((key) => ({
+    key,
+    value: PropertyType[key as keyof typeof PropertyType]
+  }));
+  
   constructor( 
     private fb: FormBuilder,
     private propertyService: PropertyService,
