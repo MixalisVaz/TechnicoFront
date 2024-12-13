@@ -2,9 +2,14 @@
   <div>
     <h2>Welcome {{username}}</h2>
   </div>
-  <h2>Your Properties:</h2>
-  <button class="btn btn-primary btn-sm" id="createProperty" 
+  <div>
+    <h2>Your Properties:</h2>
+  </div>
+  <div id="createbutton">
+    <button class="btn btn-primary btn-sm" id="createProperty" 
           (click)="router.navigate(['/properties/new/property'])">Create Property</button>
+  </div>
+  
   <table>
     <thead>
       <tr>

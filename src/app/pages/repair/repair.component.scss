@@ -21,10 +21,10 @@
   display: flex;
   justify-content: flex-end;
   position:relative;
-  top: -100px; /* Initial position (off-screen) */
-  right: -28rem; /* Adjust to align with the table's right side */
+  top: -100px; 
+  right: -33rem; 
   animation: slideFromTop 1,5s ease-out forwards !important;
-  animation-delay: 0.5s; /* Waits until title animation finishes */
+  animation-delay: 0.5s; 
 }
 
 .repairs-table {
