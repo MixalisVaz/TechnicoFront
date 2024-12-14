@@ -1,4 +1,6 @@
-<div class="updateProperty">
+  <div class="testback">
+    <div style="height: 20px;"></div>
+  <div class="updateProperty">
     <h1>Update Property</h1>
     
     <form [formGroup]="propertyForm" (ngSubmit)="onSubmit()" class="owner-form">
@@ -17,10 +19,17 @@
       </div>
       <div>
         <label for="propertyType">Property Type:</label>
-        <input id="propertyType" formControlName="propertyType" type="text">
+      <select id="propertyType" formControlName="propertyType">
+        <option value="" disabled>Select Property Type</option>
+        <option *ngFor="let option of propertyTypeOptions" [value]="option.key">
+          {{ option.value }}
+        </option>
+      </select>
       </div>
       
       <button type="submit" class="btn btn-success btn-lg" [disabled]="!propertyForm.valid">Update Property</button>
       <button type="button" class="btn btn-secondary btn-sm" (click)="propertyForm.reset()">Clear Form</button>
     </form>
   </div>
+  <div style="height: 20px;"></div>
+</div>
