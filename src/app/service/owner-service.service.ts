@@ -18,7 +18,7 @@ export class OwnerService {
     return this.http.get<any[]>(this.baseUrl);
   }
 
-  getOwnerById(id: string): Observable<any> {
+  getOwnerById(id: number): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}/${id}`);
   }
 

@@ -7,19 +7,21 @@
     <table class="owners-table">
       <thead>
         <tr>
-          <th>Username</th>
-          <th>Role</th>
-          <th>VAT Number</th>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>Address</th>
-          <th>Phone</th>
-          <th>Email</th>
-          <th>Actions</th>
+          <th scope="col">Owner Id</th>
+          <th scope="col">Username</th>
+          <th scope="col">Role</th>
+          <th scope="col">VAT Number</th>
+          <th scope="col">First Name</th>
+          <th scope="col">Last Name</th>
+          <th scope="col">Address</th>
+          <th scope="col">Phone</th>
+          <th scope="col">Email</th>
+          <th scope="col">Actions</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let owner of owners">
+        <tr *ngFor="let owner of owners; let i = index">
+          <td scope="row">{{ owner.id }}</td>
           <td>{{ owner.userName }}</td>
           <td>{{ owner.role }}</td>
           <td>{{ owner.vatNumber }}</td>

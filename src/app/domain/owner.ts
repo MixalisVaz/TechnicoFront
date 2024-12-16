@@ -1,6 +1,7 @@
 
 export interface Owner {
 
+    id:number;
     userName: string;
     password: string;
     role: 'PROPERTY_OWNER' | 'ADMIN';
